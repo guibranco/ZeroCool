@@ -1,0 +1,92 @@
+@charset "utf-8";
+
+*{padding:0;margin:0;}
+a img{border:none;}
+body{background:#666;}
+
+#cabecalho {
+	background-color: #000;
+	height: 50px;
+	width: 100%;
+	min-width: 978px !important;
+}
+#cabecalho #topo {
+	height: 50px;
+	width: 978px;
+	margin: auto;
+	border-top: #000 1px solid;
+}
+#cabecalho #topo #socialIcones{
+	margin:7px 10px;
+	float:left;
+}
+
+#cabecalho #topo #socialLinks {
+	height: 24px;
+	width: 384px;
+	margin-top: 12px;
+	margin-left: 584px;
+}
+#cabecalho #topo #socialLinks ul {
+	list-style-type: none;
+	display: block;
+	width: 384px;
+	height: 24px;	
+}
+#cabecalho #topo #socialLinks ul li {
+	display: block;
+	float: left;	
+	margin-left: 24px;
+}
+#cabecalho #topo #socialLinks ul li a img{
+	border: none;
+	width: 24px;
+	height: 24px;
+}
+
+#geral {
+	background: #666;	
+	width: 40%;
+	margin:10px auto;
+}
+
+#geral #projetos{
+	border: 3px solid #F60;
+	width: 244px;
+	background:	#FF9;
+	text-align:center;
+	float: left;
+	margin: 20px 30px;
+}
+#geral #projetos div.links{
+	font-size:18px;
+	line-height: 25px;
+	margin-top:10px;	
+	border-top: 3px solid #F60;
+}
+#geral #projetos div.links a, #geral #projetos div.links a:visited{
+	text-decoration: none;
+	color: #090;
+}
+#geral #projetos div.links a:hover{
+	color: #90C;	
+}
+#geral #mensagens{
+	width:287px;
+	height: 104px;
+	background:#000;
+	border: 3px solid #F60;
+	padding-top:25px;
+	text-align: center;
+	font-size: 22px;	
+	font-weight: bold;
+	float: left;
+	margin: 20px 30px;
+}
+#geral #mensagens a, #geral #mensagens a:visited{
+	color:#FF9;
+	text-decoration:none;
+}
+#geral #mensagens a:hover{
+	color:#F60;
+}
