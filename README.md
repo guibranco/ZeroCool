@@ -5,3 +5,7 @@ Site pessoal (Projeto de 2010)
 - https://guilhermebranco.com.br
 - https://stracini.com.br
 - https://straccini.com.br
+- https://guilherme.stracini.com.br
+- https://guilherme.straccini.com.br
+- https://stracini.com
+- https://guilherme.stracini.com
