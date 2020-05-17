@@ -1,5 +1,6 @@
 # zerocool.com.br
-Site pessoal (Projeto de 2010)
+
+Personal website (project from 2010)
 
 - https://zerocool.com.br
 - https://guilhermebranco.com.br
