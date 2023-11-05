@@ -1,4 +1,4 @@
-# ZeroCool.com.br
+# ZeroCool
 
 Personal website (project from 2010)
 
@@ -28,3 +28,4 @@ It is also available from:
 - [https://straccini.com.br](https://straccini.com.br)
 - [https://stracini.com](https://stracini.com)
 - [https://stracini.com.br](https://stracini.com.br)
+- [https://zerocool.com.br](https://zerocool.com.br)
