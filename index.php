@@ -1,9 +1,11 @@
 <?php
 
+$host = $_SERVER["HTTP_HOST"];
 $campaign = "custom_domain";
 
 if(isset($_SERVER["HTTP_REFERER"]))
     $campaign = urlencode($_SERVER["HTTP_REFERER"]);
 
-exit(header("Location: https://guibranco.github.io/?utm_campaign=" . $campaign . "&utm_media=redirect&utm_source=" . $_SERVER["HTTP_HOST"], true, 301));
-?>
+$destination = $host == "apibr.com" ? "apibr.com/ui" : "guibranco.github.io";
+
+exit(header("Location: https://" . $destination . "/?utm_campaign=" . $campaign . "&utm_media=redirect&utm_source=" . $host, true, 301));
