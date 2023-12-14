@@ -1,11 +1,11 @@
 repo_name: guibranco/ZeroCool
-report_id: b7811d5aa748d28661b18495b4a68222
+report_id: f7ceae192f89ea4555fc2289a66c7bdd
 repo_type: Public
-timestamp: '2023-11-09T15:56:33+00:00'
-requested_by: guibranco
+timestamp: '2023-12-14T09:37:54+00:00'
+requested_by: stack-file[bot]
 provider: github
 branch: main
-detected_tools_count: 5
+detected_tools_count: 7
 tools:
 - name: CSS 3
   description: The latest evolution of the Cascading Style Sheets language
@@ -36,6 +36,17 @@ tools:
   sub_category: Languages
   image_url: https://img.stackshare.io/service/991/hwUcGZ41_400x400.jpg
   detection_source: Repo Metadata
+- name: pgvector
+  description: Open-source vector similarity search for Postgres
+  website_url: https://github.com/pgvector/pgvector/
+  open_source: false
+  hosted_saas: false
+  category: Data Stores
+  sub_category: Database Tools
+  image_url: https://img.stackshare.io/service/109221/default_b888cdf5617d936aa6aacf130911906955508639.png
+  detection_source: Src/robots.txt
+  last_updated_by: Guilherme Branco Stracini
+  last_updated_on: 2020-01-22 05:41:34.000000000 Z
 - name: Git
   description: Fast, scalable, distributed revision control system
   website_url: http://git-scm.com/
@@ -53,6 +64,17 @@ tools:
   category: Build, Test, Deploy
   sub_category: Continuous Integration
   image_url: https://img.stackshare.io/service/11563/actions.png
-  detection_source: ".github/workflows/size-label.yml"
+  detection_source: ".github/workflows/deploy.yml"
   last_updated_by: Guilherme Branco Stracini
   last_updated_on: 2023-11-05 17:17:38.000000000 Z
+- name: LangChain
+  description: Build AI apps with LLMs through composability
+  website_url: https://github.com/hwchase17/langchain
+  open_source: true
+  hosted_saas: false
+  category: Communications
+  sub_category: Large Language Model Tools
+  image_url: https://img.stackshare.io/service/48790/default_5b6c6b73f1ff3775c85d2a1ba954cb87e30cbf13.jpg
+  detection_source: Src/robots.txt
+  last_updated_by: Guilherme Branco Stracini
+  last_updated_on: 2020-01-22 05:41:34.000000000 Z
