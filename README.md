@@ -1,4 +1,4 @@
-# ZeroCool
+# Zero Cool
 
 Personal website (project from 2010)
 
@@ -15,5 +15,7 @@ Personal website (project from 2010)
 ![Hacker Glider](Src/hackerGlider.png)
 
 ---
+
+Urls: 
 
 - [https://zerocool.com.br](https://zerocool.com.br)
