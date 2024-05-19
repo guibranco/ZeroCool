@@ -1,12 +1,3 @@
-<?php
-require_once("sms/config.php");
-try{
-	$local = "index";
-	require_once("sms/trackUser.php");
-}catch(Exception $e){
-	echo $e->getMessage();	
-}
-?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:fb="http://www.facebook.com/2008/fbml">
 <head>
