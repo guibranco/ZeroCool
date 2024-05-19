@@ -10,22 +10,10 @@ Personal website (project from 2010)
 
 ---
 
-💻 🤓 Repository that holds the root www directory of my servers.
+💻 🤓 Repository that holds my old portfolio page.
 
 ![Hacker Glider](Src/hackerGlider.png)
 
 ---
 
-It is also available from:
-
-- [https://apibr.com](https://apibr.com)
-- [https://guilherme.straccini.com](https://guilherme.straccini.com)
-- [https://guilherme.straccini.com.br](https://guilherme.straccini.com.br)
-- [https://guilherme.stracini.com](https://guilherme.stracini.com)
-- [https://guilherme.stracini.com.br](https://guilherme.stracini.com.br)
-- [https://guilhermebranco.com.br](https://guilhermebranco.com.br)
-- [https://straccini.com](https://straccini.com)
-- [https://straccini.com.br](https://straccini.com.br)
-- [https://stracini.com](https://stracini.com)
-- [https://stracini.com.br](https://stracini.com.br)
 - [https://zerocool.com.br](https://zerocool.com.br)
