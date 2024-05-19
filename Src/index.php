@@ -9,7 +9,7 @@
 <meta property="og:site_name" content="ZeroCool" />
 <meta property="fb:admins" content="1614826774" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<base href="https://guilhermebranco.com.br/" />
+<base href="https://zerocool.com.br/portfolio/" />
 <title>GuiBranco - Envio de SMS Grátis</title>
 <link rel="stylesheet" type="text/css" href="scripts/estilos.css?update=201210020000"/>
 <script type="text/javascript" src="https://platform.twitter.com/widgets.js"></script>
