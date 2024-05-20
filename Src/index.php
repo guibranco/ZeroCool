@@ -85,7 +85,7 @@
 			<h1>Projetos</h1>
 			<div class="links">
 			<?php
-                $baseDir = "/home/zerocool/public_html/";
+        $baseDir = "/home/zerocool/public_html/";
 			$o = opendir($baseDir);
 			$proibidos = array("cgi-bin","imagens","scripts","inovacao",".htpasswds");
 			while($item = readdir($o)) {
