@@ -86,13 +86,13 @@
 			<div class="links">
 			<?php
         $baseDir = "/home/zerocool/public_html/";
-        $o = opendir($baseDir);
-        $proibidos = array("cgi-bin","imagens","scripts","inovacao",".htpasswds");
-        while($item = readdir($o)) {
-            if(is_dir($baseDir.$item) && $item != "." && $item != ".." && !in_array($item, $proibidos)) {
-                echo "<a href='".$item."/?utm_source=index&utm_medium=projetos&utm_campaign=index'>".ucwords(str_replace("_", " ", $item))."</a><br />";
-            }
-        }
+			$o = opendir($baseDir);
+			$proibidos = array("cgi-bin","imagens","scripts","inovacao",".htpasswds");
+			while($item = readdir($o)) {
+			    if(is_dir($baseDir.$item) && $item != "." && $item != ".." && !in_array($item, $proibidos)) {
+			        echo "<a href='".$item."/?utm_source=index&utm_medium=projetos&utm_campaign=index'>".ucwords(str_replace("_", " ", $item))."</a><br />";
+			    }
+			}
 			?>
 			</div>
 		</div>
