@@ -16,6 +16,10 @@ Personal website (project from 2010)
 
 ---
 
-Urls: 
+## Urls
 
 - [https://zerocool.com.br](https://zerocool.com.br)
+
+---
+
+Copyright Guilherme Branco Stracini © 2024
