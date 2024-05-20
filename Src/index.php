@@ -84,15 +84,15 @@
 		<div id="projetos">
 			<h1>Projetos</h1>
 			<div class="links">
-			<?PHP 
-				$baseDir = "/home/zerocool/public_html/";
-				$o = opendir($baseDir);
-				$proibidos = array("cgi-bin","imagens","scripts","inovacao",".htpasswds");
-				while($item = readdir($o))
-				{
-					if(is_dir($baseDir.$item) && $item != "." && $item != ".." && !in_array($item,$proibidos))
-					echo "<a href='".$item."/?utm_source=index&utm_medium=projetos&utm_campaign=index'>".ucwords(str_replace("_"," ",$item))."</a><br />";
-				}				
+			<?php
+                $baseDir = "/home/zerocool/public_html/";
+			$o = opendir($baseDir);
+			$proibidos = array("cgi-bin","imagens","scripts","inovacao",".htpasswds");
+			while($item = readdir($o)) {
+			    if(is_dir($baseDir.$item) && $item != "." && $item != ".." && !in_array($item, $proibidos)) {
+			        echo "<a href='".$item."/?utm_source=index&utm_medium=projetos&utm_campaign=index'>".ucwords(str_replace("_", " ", $item))."</a><br />";
+			    }
+			}
 			?>
 			</div>
 		</div>
