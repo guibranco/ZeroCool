@@ -87,7 +87,7 @@
 			<?php
                             $baseDir = "/home/zerocool/public_html/";
 			$o = opendir($baseDir);
-			$proibidos = array("cgi-bin","inovacao","portfolio",".htpasswds",".well-known");
+			$proibidos = array("cgi-bin","inovacao","portfolio", "static",".htpasswds",".well-known");
 			while($item = readdir($o)) {
 			    if(is_dir($baseDir.$item) && $item != "." && $item != ".." && !in_array($item, $proibidos)) {
 			        echo "<a href='https://guilhermebranco.com.br/".$item."/?utm_source=index&utm_medium=projetos&utm_campaign=index'>".ucwords(str_replace("_", " ", $item))."</a><br />";
