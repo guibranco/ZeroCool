@@ -12,7 +12,7 @@ Personal website (project from 2010)
 
 💻 🤓 Repository that holds my old portfolio page.
 
-![Hacker Glider](Src/hackerGlider.png)
+![Hacker Glider](Src/imagens/hackerGlider.png)
 
 ---
 
@@ -22,4 +22,4 @@ Personal website (project from 2010)
 
 ---
 
-Copyright Guilherme Branco Stracini © 2024
+Copyright Guilherme Branco Stracini © 2007 - 2024
