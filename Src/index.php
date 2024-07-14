@@ -1,31 +1,35 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:fb="http://www.facebook.com/2008/fbml">
-<head>
-	<meta property="og:title" content="Guilherme Branco Stracini - Portfolio" />
-	<meta property="og:description" content="My old portfolio from 2007" /> 
-	<meta property="og:type" content="website" />
-	<meta property="og:url" content="https://zerocool.com.br/" />
-	<meta property="og:image" content="https://zerocool.com.br/portfolio/imagens/icone.png" />
-	<meta property="og:site_name" content="ZeroCool" />
-	<meta property="fb:admins" content="1614826774" />
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<base href="https://zerocool.com.br/portfolio/" />
+<!DOCTYPE html>
+<html lang="en">
+    <head>
 	<title>Guilherme Branco Stracini - Portfolio</title>
+	<meta charset="utf-8" />
+    	<meta http-equiv="x-ua-compatible" content="ie=edge" />
+    	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="description" content="Portfolio of Guilherme Branco Stracini, senior software engineer, with professional life, experiences, skills, hobbies, and contact information." />
+	<meta property="og:url" content="https://zerocool.com.br/" />
+	<meta property="og:title" content="Guilherme Branco Stracini - Senior Software Engineer" />
+	<meta property="og:site_name" content="Guilherme Branco Stracini - Senior Software Engineer" />
+	<meta property="og:description" content="Portfolio of Guilherme Branco Stracini, senior software engineer, with professional life, experiences, skills, hobbies, and contact information." />
+	<meta property="og:image" content="https://zerocool.com.br/portfolio/imagens/icone.png" />
+	<meta property="og:image:type" content="image/png" />
+    	<meta property="og:image:width" content="250" />
+    	<meta property="og:image:height" content="250" />
+    	<meta property="og:type" content="website" />    
+ 	<meta property="fb:app_id" content="290252964970555" />	
+	<meta property="fb:admins" content="1614826774" />
+	<base href="https://zerocool.com.br/portfolio/" />	
 	<link rel="stylesheet" type="text/css" href="scripts/estilos.css?update=<?php echo filemtime("scripts/estilos.css"); ?>"/>
 	<script type="text/javascript" src="https://platform.twitter.com/widgets.js"></script>
-	<script type="text/javascript">
-	  var _gaq = _gaq || [];
-	  _gaq.push(['_setAccount', 'UA-2816366-13']);
-	  _gaq.push(['_trackPageview']);
+	<script async src="https://www.googletagmanager.com/gtag/js?id=G-4KQXFWPLV8"></script>
+	<script>
+	  window.dataLayer = window.dataLayer || [];
+	  function gtag(){dataLayer.push(arguments);}
+	  gtag('js', new Date());
 	
-	  (function() {
-	    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-	    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-	    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-	  })();
+	  gtag('config', 'G-4KQXFWPLV8');
 	</script>
-</head>
-<body>
+    </head>
+    <body>
 	<div id="fb-root"></div>
 	<script>(function(d, s, id) {
 	  var js, fjs = d.getElementsByTagName(s)[0];
@@ -113,5 +117,5 @@
 		  })();
 	</script>
 	<script type="text/javascript" src="https://assets.pinterest.com/js/pinit.js"></script>
-</body>
+    </body>
 </html>
