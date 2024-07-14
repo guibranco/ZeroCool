@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-	<title>Guilherme Branco Stracini - Portfolio</title>
+	<title>Guilherme Branco Stracini - Senior Software Engineer</title>
 	<meta charset="utf-8" />
-    	<meta http-equiv="x-ua-compatible" content="ie=edge" />
+	<meta http-equiv="x-ua-compatible" content="ie=edge" />
     	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta name="description" content="Portfolio of Guilherme Branco Stracini, senior software engineer, with professional life, experiences, skills, hobbies, and contact information." />
 	<meta property="og:url" content="https://zerocool.com.br/" />
@@ -19,6 +19,7 @@
 	<meta property="fb:admins" content="1614826774" />
 	<base href="https://zerocool.com.br/portfolio/" />
 	<link rel="stylesheet" type="text/css" href="scripts/estilos.css?update=<?php echo filemtime("scripts/estilos.css"); ?>"/>
+	<link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
 	<script type="text/javascript" src="https://platform.twitter.com/widgets.js"></script>
 	<script async src="https://www.googletagmanager.com/gtag/js?id=G-4KQXFWPLV8"></script>
 	<script>
