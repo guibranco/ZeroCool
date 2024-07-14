@@ -1,4 +1,4 @@
-# Zero Cool
+# Zero Cool - Personal website
 
 Portfolio website (first version from 2007)
 
