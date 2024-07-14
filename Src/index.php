@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:fb="http://www.facebook.com/2008/fbml">
 <head>
-<meta property="og:description" content="@GuiBranco - Envio de SMS Grátis" /> 
+<meta property="og:description" content="Guilherme Branco Stracini - Portfolio" /> 
 <meta property="og:title" content="@GuiBranco - Envio de SMS Grátis" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://zerocool.com.br/" />
@@ -82,7 +82,7 @@
 	</div>
 	<div id="geral">
 		<div id="projetos">
-			<h1>Projetos</h1>
+			<h1>Projects</h1>
 			<div class="links">
 			<?php
                             $baseDir = "/home/zerocool/public_html/";
@@ -90,7 +90,7 @@
 			$proibidos = array("cgi-bin","inovacao","portfolio", "static",".htpasswds",".well-known");
 			while($item = readdir($o)) {
 			    if(is_dir($baseDir.$item) && $item != "." && $item != ".." && !in_array($item, $proibidos)) {
-			        echo "<a href='https://guilhermebranco.com.br/".$item."/?utm_source=index&utm_medium=projetos&utm_campaign=index'>".ucwords(str_replace("_", " ", $item))."</a><br />";
+			        echo "<a href='https://guilhermebranco.com.br/".$item."/?utm_source=zerocool&utm_medium=projetos&utm_campaign=old_portfolio'>".ucwords(str_replace("_", " ", $item))."</a><br />";
 			    }
 			}
 			closedir($o);
@@ -99,7 +99,11 @@
 		</div>
 
 		<div id="mensagens">
-			<a href="https://guilhermebranco.com.br/sms/?utm_source=index&utm_medium=mensagens&utm_campaign=index">Envio gr&aacute;tis de SMS</a>
+			<a href="https://guilhermebranco.com.br/sms/?utm_source=zerool&utm_medium=mensagens&utm_campaign=old_portfolio">Free SMS sending</a>
+		</div>
+
+		<div id="novo_portfolio">
+			<a href="https://guilhermebranco.com.br//?utm_source=zerocool&utm_medium=mensagens&utm_campaign=old_portfolio">New portfolio</a>
 		</div>
 	</div>
 
