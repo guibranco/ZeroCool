@@ -1,16 +1,16 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:fb="http://www.facebook.com/2008/fbml">
 <head>
-<meta property="og:description" content="Guilherme Branco Stracini - Portfolio" /> 
-<meta property="og:title" content="@GuiBranco - Envio de SMS Grátis" />
+<meta property="og:title" content="Guilherme Branco Stracini - Portfolio" />
+<meta property="og:description" content="My old portfolio from 2007" /> 
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://zerocool.com.br/" />
-<meta property="og:image" content="https://zerocool.com.br/imagens/icone.png" />
+<meta property="og:image" content="https://zerocool.com.br/portfolio/imagens/icone.png" />
 <meta property="og:site_name" content="ZeroCool" />
 <meta property="fb:admins" content="1614826774" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <base href="https://zerocool.com.br/portfolio/" />
-<title>GuiBranco - Envio de SMS Grátis</title>
+<title>Guilherme Branco Stracini - Portfolio</title>
 <link rel="stylesheet" type="text/css" href="scripts/estilos.css?update=201210020000"/>
 <script type="text/javascript" src="https://platform.twitter.com/widgets.js"></script>
 <script type="text/javascript" src="https://widgets.twimg.com/j/2/widget.js"></script>
@@ -41,7 +41,7 @@
 	<div id="cabecalho">
 		<div id="topo">
 			<div id="socialIcones">
-				<a href="https://twitter.com/share" class="twitter-share-button" data-url="https://zerocool.com.br/sms" data-text="Envio de SMS Grátis" data-via="GuiBranco" data-lang="pt">Tweetar</a>
+				<a href="https://twitter.com/share" class="twitter-share-button" data-url="https://zerocool.com.br/sms" data-text="Send free SMS" data-via="GuiBranco" data-lang="pt">Tweet</a>
 				<a href="http://pinterest.com/pin/create/button/?url=https%3A%2F%2Fzerocool.com.br%2Fsms%2F&media=http%3A%2F%2Fzerocool.com.br%2Fsms%2Fimagens%2Ficone.png&description=Send%20free%20real%20SMS%20over%20the%20internet%20to%20any%20handset%20over%20the%20world" class="pin-it-button" count-layout="horizontal"><img border="0" src="//assets.pinterest.com/images/PinExt.png" title="Pin It" /></a>
 			</div>
 			<div id="socialLinks">
