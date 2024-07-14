@@ -14,10 +14,10 @@
 	<meta property="og:image:type" content="image/png" />
     	<meta property="og:image:width" content="250" />
     	<meta property="og:image:height" content="250" />
-    	<meta property="og:type" content="website" />    
- 	<meta property="fb:app_id" content="290252964970555" />	
+    	<meta property="og:type" content="website" />
+ 	<meta property="fb:app_id" content="290252964970555" />
 	<meta property="fb:admins" content="1614826774" />
-	<base href="https://zerocool.com.br/portfolio/" />	
+	<base href="https://zerocool.com.br/portfolio/" />
 	<link rel="stylesheet" type="text/css" href="scripts/estilos.css?update=<?php echo filemtime("scripts/estilos.css"); ?>"/>
 	<script type="text/javascript" src="https://platform.twitter.com/widgets.js"></script>
 	<script async src="https://www.googletagmanager.com/gtag/js?id=G-4KQXFWPLV8"></script>
