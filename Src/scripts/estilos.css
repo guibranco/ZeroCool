@@ -71,7 +71,7 @@ body{background:#666;}
 #geral #projetos div.links a:hover{
 	color: #90C;	
 }
-#geral #mensagens{
+#geral #mensagens, #geral #novo_portfolio{
 	width:287px;
 	height: 104px;
 	background:#000;
@@ -83,10 +83,10 @@ body{background:#666;}
 	float: left;
 	margin: 20px 30px;
 }
-#geral #mensagens a, #geral #mensagens a:visited{
+#geral #mensagens a, #geral #mensagens a:visited, #geral #novo_portfolio a, #geral #novo_portfolio a:visited{
 	color:#FF9;
 	text-decoration:none;
 }
-#geral #mensagens a:hover{
+#geral #mensagens a:hover, #geral #novo_portfolio a:hover{
 	color:#F60;
 }
