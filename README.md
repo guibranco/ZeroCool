@@ -1,6 +1,6 @@
 # Zero Cool
 
-Personal website (project from 2010)
+Personal website (project from 2007).
 
 [![wakatime](https://wakatime.com/badge/github/guibranco/ZeroCool.svg)](https://wakatime.com/badge/github/guibranco/ZeroCool)
 [![Deploy via ftp](https://github.com/guibranco/ZeroCool/actions/workflows/deploy.yml/badge.svg)](https://github.com/guibranco/ZeroCool/actions/workflows/deploy.yml)
