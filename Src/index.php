@@ -13,7 +13,6 @@
 <title>Guilherme Branco Stracini - Portfolio</title>
 <link rel="stylesheet" type="text/css" href="scripts/estilos.css?update=201210020000"/>
 <script type="text/javascript" src="https://platform.twitter.com/widgets.js"></script>
-<script type="text/javascript" src="https://widgets.twimg.com/j/2/widget.js"></script>
 <script type="text/javascript">
   var _gaq = _gaq || [];
   _gaq.push(['_setAccount', 'UA-2816366-13']);
