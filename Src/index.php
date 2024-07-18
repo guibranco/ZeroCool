@@ -19,13 +19,18 @@ $utm = "?utm_source=zerocool&utm_medium=projects&utm_campaign=old_portfolio";
 $description = "Portfolio of Guilherme Branco Stracini, senior software engineer, with professional life, experiences, skills, hobbies, and contact information.";
 
 $socialLinks = array(
+    "github" => "https://github.com/guibranco",
     "twitter" => "https://www.twitter.com/GuiBranco",
     "facebook" => "https://www.facebook.com/guilherme.stracini",
     "youtube" => "https://www.youtube.com/@GuilhermeBrancoStracini",
     "pinterest" => "https://pinterest.com/guibranco/",
     "soundcloud" => "https://soundcloud.com/guilherme-stracini",
-    "linkedin" => "https://www.linkedin.com/in/guilhermestracini"
+    "linkedin" => "https://www.linkedin.com/in/guilhermestracini",
+    "stackoverflow" => "https://stackoverflow.com/users/1890220/guilherme-branco-stracini",
+    "instagram" => "https://www.instagram.com/guilhermebrancostracini",
+    "whatsapp" => "https://api.whatsapp.com/send/?phone=5511972659788&text=Hello%2C+Guilherme%21"
 );
+ksort($socialLinks);
 
 ?>
 <!DOCTYPE html>
@@ -77,7 +82,7 @@ $socialLinks = array(
                         echo "</a>\n";
                         echo "</li>\n";
                     }
-?>
+                    ?>
                 </ul>
             </div>
         </div>
@@ -90,7 +95,7 @@ $socialLinks = array(
                 foreach ($projects as $project) {
                     echo "<a href='https://guilhermebranco.com.br/" . $project . "/" . $utm . "'>" . ucwords(str_replace("_", " ", $project)) . "</a><br />\n";
                 }
-?>
+                ?>
             </div>
         </div>
 
