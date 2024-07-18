@@ -75,7 +75,7 @@ body {
   color: #90c;
 }
 #content #boxes {
-  width: 70%;
+  width: 50%;
   float: left;
 }
 
@@ -106,7 +106,7 @@ body {
 }
 
 #content #facebook {
-  width: 15%;
+  width: 20%;
   float: left;
   padding-top: 25px;
   margin: 20px 30px;
