@@ -35,8 +35,7 @@ $utm = "?utm_source=zerocool&utm_medium=projects&utm_campaign=old_portfolio";
     <meta property="fb:app_id" content="290252964970555" />
     <meta property="fb:admins" content="1614826774" />
     <base href="https://zerocool.com.br/portfolio/" />
-    <link rel="stylesheet" type="text/css"
-        href="scripts/estilos.css?update=<?php echo filemtime("scripts/estilos.css"); ?>" />
+    <link rel="stylesheet" type="text/css" href="styles.css?update=<?php echo filemtime("styles.css"); ?>" />
     <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-4KQXFWPLV8"></script>
     <script>
@@ -52,8 +51,8 @@ $utm = "?utm_source=zerocool&utm_medium=projects&utm_campaign=old_portfolio";
     <script async defer crossorigin="anonymous"
         src="https://connect.facebook.net/pt_BR/sdk.js#xfbml=1&version=v20.0&appId=290252964970555"
         nonce="mLVu8wYS"></script>
-    <div id="cabecalho">
-        <div id="topo">
+    <div id="header">
+        <div id="top">
             <div id="socialLinks">
                 <ul>
                     <li>
@@ -101,8 +100,8 @@ $utm = "?utm_source=zerocool&utm_medium=projects&utm_campaign=old_portfolio";
             </div>
         </div>
     </div>
-    <div id="geral">
-        <div id="projetos">
+    <div id="content">
+        <div id="projects">
             <h1>Projects</h1>
             <div class="links">
                 <?php
@@ -113,14 +112,18 @@ $utm = "?utm_source=zerocool&utm_medium=projects&utm_campaign=old_portfolio";
             </div>
         </div>
 
-        <div id="mensagens">
-            <a href="https://guilhermebranco.com.br/sms/<?php echo $utm; ?>">Free SMS sending</a>
+        <div id="boxes">
+            <div id="free-sms">
+                <a href="https://guilhermebranco.com.br/sms/<?php echo $utm; ?>">Free SMS sending</a>
+            </div>
+
+            <div id="personal-links">
+                <a href="https://guilhermebranco.com.br/<?php echo $utm; ?>">Portfolio</a> <br />
+                <a href="https://blog.guilhermebranco.com.br/<?php echo $utm; ?>">Blog</a> <br />
+            </div>
+
         </div>
 
-        <div id="novo_portfolio">
-            <a href="https://guilhermebranco.com.br/<?php echo $utm; ?>">Portfolio</a> <br />
-            <a href="https://blog.guilhermebranco.com.br/<?php echo $utm; ?>">Blog</a> <br />
-        </div>
         <div class="fb-page" data-href="https://www.facebook.com/guilhermebrancostracini" data-tabs="timeline"
             data-width="" data-height="" data-small-header="false" data-adapt-container-width="true"
             data-hide-cover="false" data-show-facepile="true">
