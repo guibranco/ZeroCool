@@ -108,7 +108,7 @@ $utm = "?utm_source=zerocool&utm_medium=projects&utm_campaign=old_portfolio";
                 foreach ($projects as $project) {
                     echo "<a href='https://guilhermebranco.com.br/" . $project . "/" . $utm . "'>" . ucwords(str_replace("_", " ", $project)) . "</a><br />\n";
                 }
-?>
+                ?>
             </div>
         </div>
 
@@ -117,7 +117,7 @@ $utm = "?utm_source=zerocool&utm_medium=projects&utm_campaign=old_portfolio";
                 <a href="https://guilhermebranco.com.br/sms/<?php echo $utm; ?>">Free SMS sending</a>
             </div>
 
-            <div id="personal-links">
+            <div id="personal">
                 <a href="https://guilhermebranco.com.br/<?php echo $utm; ?>">Portfolio</a> <br />
                 <a href="https://blog.guilhermebranco.com.br/<?php echo $utm; ?>">Blog</a> <br />
             </div>
