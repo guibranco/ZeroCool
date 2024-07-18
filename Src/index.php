@@ -42,10 +42,6 @@
 	</script>
 	<div id="cabecalho">
 		<div id="topo">
-			<div id="socialIcones">
-				<a href="https://twitter.com/share" class="twitter-share-button" data-url="https://zerocool.com.br/sms" data-text="Send free SMS" data-via="GuiBranco" data-lang="pt">Tweet</a>
-				<a href="http://pinterest.com/pin/create/button/?url=https%3A%2F%2Fzerocool.com.br%2Fsms%2F&media=http%3A%2F%2Fzerocool.com.br%2Fsms%2Fimagens%2Ficone.png&description=Send%20free%20real%20SMS%20over%20the%20internet%20to%20any%20handset%20over%20the%20world" class="pin-it-button" count-layout="horizontal"><img border="0" src="//assets.pinterest.com/images/PinExt.png" title="Pin It" /></a>
-			</div>
 			<div id="socialLinks">
 				<ul>
 					<li>
@@ -87,16 +83,22 @@
 			<h1>Projects</h1>
 			<div class="links">
 			<?php
-                            $baseDir = "/home/zerocool/public_html/";
-	$o = opendir($baseDir);
-	$proibidos = array("cgi-bin","inovacao","portfolio", "static",".htpasswds",".well-known");
-	while($item = readdir($o)) {
-	    if(is_dir($baseDir.$item) && $item != "." && $item != ".." && !in_array($item, $proibidos)) {
-	        echo "<a href='https://guilhermebranco.com.br/".$item."/?utm_source=zerocool&utm_medium=projetos&utm_campaign=old_portfolio'>".ucwords(str_replace("_", " ", $item))."</a><br />";
-	    }
-	}
-	closedir($o);
-	?>
+	                    $baseDir = "/home/zerocool/public_html/";
+			    $o = opendir($baseDir);
+			    $proibidos = array("cgi-bin","inovacao","portfolio", "static",".htpasswds",".well-known");
+			    $projects = array();
+			    while($item = readdir($o)) {
+			        if(is_dir($baseDir.$item) && $item != "." && $item != ".." && !in_array($item, $proibidos)) {
+				    $projects[] = $item;
+				}
+			    }
+			    closedir($o);
+			    sort($projects);
+			    $utm = "?utm_source=zerocool&utm_medium=projetos&utm_campaign=old_portfolio";
+			    foreach ($projects as $project) {
+			        echo "<a href='https://guilhermebranco.com.br/".$project."/".$utm."'>".ucwords(str_replace("_", " ", $project))."</a><br />\n";
+			    }
+			?>
 			</div>
 		</div>
 
@@ -108,15 +110,5 @@
 			<a href="https://guilhermebranco.com.br//?utm_source=zerocool&utm_medium=mensagens&utm_campaign=old_portfolio">New portfolio</a>
 		</div>
 	</div>
-
-	<script type="text/javascript">
-		window.___gcfg = {lang: 'pt-BR'};
-		  (function() {
-			var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
-			po.src = 'https://apis.google.com/js/plusone.js';
-			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
-		  })();
-	</script>
-	<script type="text/javascript" src="https://assets.pinterest.com/js/pinit.js"></script>
     </body>
 </html>
