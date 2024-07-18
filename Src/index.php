@@ -57,43 +57,44 @@ $utm = "?utm_source=zerocool&utm_medium=projects&utm_campaign=old_portfolio";
             <div id="socialLinks">
                 <ul>
                     <li>
-                        <a href="https://www.twitter.com/GuiBranco" title="GuiBranco no Twitter" target="_blank">
-                            <img src="imagens/twitter.png" width="24" height="24" alt="GuiBranco no Twitter" />
-                        </a>
-                    </li>
-                    <li>
-                        <a href="https://www.facebook.com/guilherme.stracini"
-                            title="Guilherme Branco Stracini no Facebook" target="_blank">
-                            <img src="imagens/facebook.png" width="24" height="24"
-                                alt="Guilherme Branco Stracini no Facebook" />
-                        </a>
-                    </li>
-                    <li>
-                        <a href="https://www.youtube.com/@GuilhermeBrancoStracini"
-                            title="Canal @GuilhermeBrancoStracini no Youtube" target="_blank">
-                            <img src="imagens/youtube.png" width="24" height="24"
-                                alt="Canal @GuilhermeBrancoStracini no Youtube" />
-                        </a>
-                    </li>
-                    <li>
-                        <a href="https://pinterest.com/guibranco/" title="Guilherme Branco Stracini no Pinterest"
+                        <a href="https://www.twitter.com/GuiBranco" rel="noopener" title="GuiBranco on Twitter"
                             target="_blank">
+                            <img src="imagens/twitter.png" width="24" height="24" alt="GuiBranco on Twitter" />
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.facebook.com/guilherme.stracini" rel="noopener"
+                            title="Guilherme Branco Stracini on Facebook" target="_blank">
+                            <img src="imagens/facebook.png" width="24" height="24"
+                                alt="Guilherme Branco Stracini on Facebook" />
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.youtube.com/@GuilhermeBrancoStracini" rel="noopener"
+                            title="Canal @GuilhermeBrancoStracini on Youtube" target="_blank">
+                            <img src="imagens/youtube.png" width="24" height="24"
+                                alt="Canal @GuilhermeBrancoStracini on Youtube" />
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://pinterest.com/guibranco/" rel="noopener"
+                            title="Guilherme Branco Stracini on Pinterest" target="_blank">
                             <img src="imagens/pinterest.png" width="24" height="24"
-                                alt="Guilherme Branco Stracini no Pinterest" />
+                                alt="Guilherme Branco Stracini on Pinterest" />
                         </a>
                     </li>
                     <li>
-                        <a href="https://soundcloud.com/guilherme-stracini"
-                            title="Guilherme Branco Stracini no SoundCloud" target="_blank">
+                        <a href="https://soundcloud.com/guilherme-stracini" rel="noopener"
+                            title="Guilherme Branco Stracini on SoundCloud" target="_blank">
                             <img src="imagens/soundcloud.png" width="24" height="24"
-                                alt="Guilherme Branco Stracini no SoundCloud" />
+                                alt="Guilherme Branco Stracini on SoundCloud" />
                         </a>
                     </li>
                     <li>
-                        <a href="https://www.linkedin.com/in/guilhermestracini/"
-                            title="Guilherme Branco Stracini no LinkedIn" target="_blank">
+                        <a href="https://www.linkedin.com/in/guilhermestracini/" rel="noopener"
+                            title="Guilherme Branco Stracini on LinkedIn" target="_blank">
                             <img src="imagens/linkedin.png" width="24" height="24"
-                                alt="Guilherme Branco Stracini no LinkedIn" />
+                                alt="Guilherme Branco Stracini on LinkedIn" />
                         </a>
                     </li>
                 </ul>
@@ -108,7 +109,7 @@ $utm = "?utm_source=zerocool&utm_medium=projects&utm_campaign=old_portfolio";
                 foreach ($projects as $project) {
                     echo "<a href='https://guilhermebranco.com.br/" . $project . "/" . $utm . "'>" . ucwords(str_replace("_", " ", $project)) . "</a><br />\n";
                 }
-?>
+                ?>
             </div>
         </div>
 
@@ -117,7 +118,8 @@ $utm = "?utm_source=zerocool&utm_medium=projects&utm_campaign=old_portfolio";
         </div>
 
         <div id="novo_portfolio">
-            <a href="https://guilhermebranco.com.br/<?php echo $utm; ?>">New portfolio</a>
+            <a href="https://guilhermebranco.com.br/<?php echo $utm; ?>">Portfolio</a> <br />
+            <a href="https://blog.guilhermebranco.com.br/<?php echo $utm; ?>">Blog</a> <br />
         </div>
         <div class="fb-page" data-href="https://www.facebook.com/guilhermebrancostracini" data-tabs="timeline"
             data-width="" data-height="" data-small-header="false" data-adapt-container-width="true"
