@@ -77,7 +77,7 @@ $socialLinks = array(
                         echo "</a>\n";
                         echo "</li>\n";
                     }
-                    ?>
+?>
                 </ul>
             </div>
         </div>
@@ -90,7 +90,7 @@ $socialLinks = array(
                 foreach ($projects as $project) {
                     echo "<a href='https://guilhermebranco.com.br/" . $project . "/" . $utm . "'>" . ucwords(str_replace("_", " ", $project)) . "</a><br />\n";
                 }
-                ?>
+?>
             </div>
         </div>
 
