@@ -52,8 +52,8 @@ $utm = "?utm_source=zerocool&utm_medium=projects&utm_campaign=old_portfolio";
     <script async defer crossorigin="anonymous"
         src="https://connect.facebook.net/pt_BR/sdk.js#xfbml=1&version=v20.0&appId=290252964970555"
         nonce="mLVu8wYS"></script>
-    <div id="cabecalho">
-        <div id="topo">
+    <div id="header">
+        <div id="top">
             <div id="socialLinks">
                 <ul>
                     <li>
@@ -101,23 +101,23 @@ $utm = "?utm_source=zerocool&utm_medium=projects&utm_campaign=old_portfolio";
             </div>
         </div>
     </div>
-    <div id="geral">
-        <div id="projetos">
+    <div id="content">
+        <div id="projects">
             <h1>Projects</h1>
             <div class="links">
                 <?php
                 foreach ($projects as $project) {
                     echo "<a href='https://guilhermebranco.com.br/" . $project . "/" . $utm . "'>" . ucwords(str_replace("_", " ", $project)) . "</a><br />\n";
                 }
-?>
+                ?>
             </div>
         </div>
 
-        <div id="mensagens">
+        <div id="free-sms">
             <a href="https://guilhermebranco.com.br/sms/<?php echo $utm; ?>">Free SMS sending</a>
         </div>
 
-        <div id="novo_portfolio">
+        <div id="personal-links">
             <a href="https://guilhermebranco.com.br/<?php echo $utm; ?>">Portfolio</a> <br />
             <a href="https://blog.guilhermebranco.com.br/<?php echo $utm; ?>">Blog</a> <br />
         </div>
