@@ -108,7 +108,7 @@ $utm = "?utm_source=zerocool&utm_medium=projects&utm_campaign=old_portfolio";
                 foreach ($projects as $project) {
                     echo "<a href='https://guilhermebranco.com.br/" . $project . "/" . $utm . "'>" . ucwords(str_replace("_", " ", $project)) . "</a><br />\n";
                 }
-?>
+                ?>
             </div>
         </div>
 
@@ -123,12 +123,14 @@ $utm = "?utm_source=zerocool&utm_medium=projects&utm_campaign=old_portfolio";
             </div>
 
         </div>
-
-        <div class="fb-page" data-href="https://www.facebook.com/guilhermebrancostracini" data-tabs="timeline"
-            data-width="" data-height="" data-small-header="false" data-adapt-container-width="true"
-            data-hide-cover="false" data-show-facepile="true">
-            <blockquote cite="https://www.facebook.com/guilhermebrancostracini" class="fb-xfbml-parse-ignore"><a
-                    href="https://www.facebook.com/guilhermebrancostracini">Guilherme Branco Stracini</a></blockquote>
+        <div id="facebook">
+            <div class="fb-page" data-href="https://www.facebook.com/guilhermebrancostracini" data-tabs="timeline"
+                data-width="" data-height="" data-small-header="false" data-adapt-container-width="true"
+                data-hide-cover="false" data-show-facepile="true">
+                <blockquote cite="https://www.facebook.com/guilhermebrancostracini" class="fb-xfbml-parse-ignore"><a
+                        href="https://www.facebook.com/guilhermebrancostracini">Guilherme Branco Stracini</a>
+                </blockquote>
+            </div>
         </div>
     </div>
 </body>
