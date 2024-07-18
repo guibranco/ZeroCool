@@ -112,14 +112,18 @@ $utm = "?utm_source=zerocool&utm_medium=projects&utm_campaign=old_portfolio";
             </div>
         </div>
 
-        <div id="free-sms">
-            <a href="https://guilhermebranco.com.br/sms/<?php echo $utm; ?>">Free SMS sending</a>
+        <div id="boxes">
+            <div id="free-sms">
+                <a href="https://guilhermebranco.com.br/sms/<?php echo $utm; ?>">Free SMS sending</a>
+            </div>
+
+            <div id="personal-links">
+                <a href="https://guilhermebranco.com.br/<?php echo $utm; ?>">Portfolio</a> <br />
+                <a href="https://blog.guilhermebranco.com.br/<?php echo $utm; ?>">Blog</a> <br />
+            </div>
+
         </div>
 
-        <div id="personal-links">
-            <a href="https://guilhermebranco.com.br/<?php echo $utm; ?>">Portfolio</a> <br />
-            <a href="https://blog.guilhermebranco.com.br/<?php echo $utm; ?>">Blog</a> <br />
-        </div>
         <div class="fb-page" data-href="https://www.facebook.com/guilhermebrancostracini" data-tabs="timeline"
             data-width="" data-height="" data-small-header="false" data-adapt-container-width="true"
             data-hide-cover="false" data-show-facepile="true">
