@@ -4,13 +4,29 @@ $o = opendir($baseDir);
 $forbidden = array("cgi-bin", "inovacao", "portfolio", "static", ".htpasswds", ".well-known");
 $projects = array();
 while ($item = readdir($o)) {
-    if (is_dir($baseDir . $item) && $item != "." && $item != ".." && !in_array($item, $forbidden)) {
-        $projects[] = $item;
+    if (
+        is_dir($baseDir . $item) &&
+        $item != "." &&
+        $item != ".." &&
+        !in_array($item, $forbidden)
+    ) {
+        $projects[strtolower($item)] = $item;
     }
 }
 closedir($o);
-sort($projects);
+ksort($projects);
 $utm = "?utm_source=zerocool&utm_medium=projects&utm_campaign=old_portfolio";
+$description = "Portfolio of Guilherme Branco Stracini, senior software engineer, with professional life, experiences, skills, hobbies, and contact information.";
+
+$socialLinks = array(
+    "twitter" => "https://www.twitter.com/GuiBranco",
+    "facebook" => "https://www.facebook.com/guilherme.stracini",
+    "youtube" => "https://www.youtube.com/@GuilhermeBrancoStracini",
+    "pinterest" => "https://pinterest.com/guibranco/",
+    "soundcloud" => "https://soundcloud.com/guilherme-stracini",
+    "linkedin" => "https://www.linkedin.com/in/guilhermestracini"
+);
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -20,13 +36,11 @@ $utm = "?utm_source=zerocool&utm_medium=projects&utm_campaign=old_portfolio";
     <meta charset="utf-8" />
     <meta http-equiv="x-ua-compatible" content="ie=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description"
-        content="Portfolio of Guilherme Branco Stracini, senior software engineer, with professional life, experiences, skills, hobbies, and contact information." />
+    <meta name="description" content="<?php echo $description; ?>" />
     <meta property="og:url" content="https://zerocool.com.br/" />
     <meta property="og:title" content="Guilherme Branco Stracini - Senior Software Engineer" />
     <meta property="og:site_name" content="Guilherme Branco Stracini - Senior Software Engineer" />
-    <meta property="og:description"
-        content="Portfolio of Guilherme Branco Stracini, senior software engineer, with professional life, experiences, skills, hobbies, and contact information." />
+    <meta property="og:description" content="<?php echo $description; ?>" />
     <meta property="og:image" content="https://zerocool.com.br/portfolio/imagens/icone.png" />
     <meta property="og:image:type" content="image/png" />
     <meta property="og:image:width" content="250" />
@@ -55,47 +69,15 @@ $utm = "?utm_source=zerocool&utm_medium=projects&utm_campaign=old_portfolio";
         <div id="top">
             <div id="socialLinks">
                 <ul>
-                    <li>
-                        <a href="https://www.twitter.com/GuiBranco" rel="noopener" title="GuiBranco on Twitter"
-                            target="_blank">
-                            <img src="imagens/twitter.png" width="24" height="24" alt="GuiBranco on Twitter" />
-                        </a>
-                    </li>
-                    <li>
-                        <a href="https://www.facebook.com/guilherme.stracini" rel="noopener"
-                            title="Guilherme Branco Stracini on Facebook" target="_blank">
-                            <img src="imagens/facebook.png" width="24" height="24"
-                                alt="Guilherme Branco Stracini on Facebook" />
-                        </a>
-                    </li>
-                    <li>
-                        <a href="https://www.youtube.com/@GuilhermeBrancoStracini" rel="noopener"
-                            title="Canal @GuilhermeBrancoStracini on Youtube" target="_blank">
-                            <img src="imagens/youtube.png" width="24" height="24"
-                                alt="Canal @GuilhermeBrancoStracini on Youtube" />
-                        </a>
-                    </li>
-                    <li>
-                        <a href="https://pinterest.com/guibranco/" rel="noopener"
-                            title="Guilherme Branco Stracini on Pinterest" target="_blank">
-                            <img src="imagens/pinterest.png" width="24" height="24"
-                                alt="Guilherme Branco Stracini on Pinterest" />
-                        </a>
-                    </li>
-                    <li>
-                        <a href="https://soundcloud.com/guilherme-stracini" rel="noopener"
-                            title="Guilherme Branco Stracini on SoundCloud" target="_blank">
-                            <img src="imagens/soundcloud.png" width="24" height="24"
-                                alt="Guilherme Branco Stracini on SoundCloud" />
-                        </a>
-                    </li>
-                    <li>
-                        <a href="https://www.linkedin.com/in/guilhermestracini/" rel="noopener"
-                            title="Guilherme Branco Stracini on LinkedIn" target="_blank">
-                            <img src="imagens/linkedin.png" width="24" height="24"
-                                alt="Guilherme Branco Stracini on LinkedIn" />
-                        </a>
-                    </li>
+                    <?php
+                    foreach ($socialLinks as $social => $link) {
+                        echo "<li>\n";
+                        echo "<a href='" . $link . "' rel='noopener' title='Guilherme Branco Stracini on " . ucwords($social) . "' target='_blank'>\n";
+                        echo "<img src='imagens/" . $social . ".png' width='24' height='24' alt='Guilherme Branco Stracini on " . ucwords($social) . "' />\n";
+                        echo "</a>\n";
+                        echo "</li>\n";
+                    }
+                    ?>
                 </ul>
             </div>
         </div>
@@ -108,7 +90,7 @@ $utm = "?utm_source=zerocool&utm_medium=projects&utm_campaign=old_portfolio";
                 foreach ($projects as $project) {
                     echo "<a href='https://guilhermebranco.com.br/" . $project . "/" . $utm . "'>" . ucwords(str_replace("_", " ", $project)) . "</a><br />\n";
                 }
-?>
+                ?>
             </div>
         </div>
 
