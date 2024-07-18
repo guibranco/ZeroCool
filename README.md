@@ -29,4 +29,4 @@ The new version is my resume with my occupations in the last years and some hobb
 
 ---
 
-Copyright Guilherme Branco Stracini © 2007 - 2024
+Copyright © Guilherme Branco Stracini - 2007 - 2024
