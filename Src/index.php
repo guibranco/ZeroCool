@@ -83,22 +83,22 @@
 			<h1>Projects</h1>
 			<div class="links">
 			<?php
-	                    $baseDir = "/home/zerocool/public_html/";
-			    $o = opendir($baseDir);
-			    $proibidos = array("cgi-bin","inovacao","portfolio", "static",".htpasswds",".well-known");
-			    $projects = array();
-			    while($item = readdir($o)) {
-			        if(is_dir($baseDir.$item) && $item != "." && $item != ".." && !in_array($item, $proibidos)) {
-				    $projects[] = $item;
-				}
-			    }
-			    closedir($o);
-			    sort($projects);
-			    $utm = "?utm_source=zerocool&utm_medium=projetos&utm_campaign=old_portfolio";
-			    foreach ($projects as $project) {
-			        echo "<a href='https://guilhermebranco.com.br/".$project."/".$utm."'>".ucwords(str_replace("_", " ", $project))."</a><br />\n";
-			    }
-			?>
+                        $baseDir = "/home/zerocool/public_html/";
+	$o = opendir($baseDir);
+	$proibidos = array("cgi-bin","inovacao","portfolio", "static",".htpasswds",".well-known");
+	$projects = array();
+	while($item = readdir($o)) {
+	    if(is_dir($baseDir.$item) && $item != "." && $item != ".." && !in_array($item, $proibidos)) {
+	        $projects[] = $item;
+	    }
+	}
+	closedir($o);
+	sort($projects);
+	$utm = "?utm_source=zerocool&utm_medium=projetos&utm_campaign=old_portfolio";
+	foreach ($projects as $project) {
+	    echo "<a href='https://guilhermebranco.com.br/".$project."/".$utm."'>".ucwords(str_replace("_", " ", $project))."</a><br />\n";
+	}
+	?>
 			</div>
 		</div>
 
