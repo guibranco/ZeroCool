@@ -16,11 +16,6 @@ body{background:#666;}
 	margin: auto;
 	border-top: #000 1px solid;
 }
-#cabecalho #topo #socialIcones{
-	margin:7px 10px;
-	float:left;
-}
-
 #cabecalho #topo #socialLinks {
 	height: 24px;
 	width: 384px;
