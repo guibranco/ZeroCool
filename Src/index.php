@@ -35,8 +35,7 @@ $utm = "?utm_source=zerocool&utm_medium=projects&utm_campaign=old_portfolio";
     <meta property="fb:app_id" content="290252964970555" />
     <meta property="fb:admins" content="1614826774" />
     <base href="https://zerocool.com.br/portfolio/" />
-    <link rel="stylesheet" type="text/css"
-        href="scripts/estilos.css?update=<?php echo filemtime("scripts/estilos.css"); ?>" />
+    <link rel="stylesheet" type="text/css" href="styles.css?update=<?php echo filemtime("styles.css"); ?>" />
     <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-4KQXFWPLV8"></script>
     <script>
