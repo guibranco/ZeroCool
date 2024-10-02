@@ -93,7 +93,11 @@ ksort($socialLinks);
             <div class="links">
                 <?php
                 foreach ($projects as $project) {
-                    echo "<a href='https://guilhermebranco.com.br/" . $project . "/" . $utm . "'>" . ucwords(str_replace("_", " ", str_replace("-", " ", $project))) . "</a><br />\n";
+                    $name = ucwords(str_replace("_", " ", str_replace("-", " ", $project)));
+                    if (strlen($name) <= 3) {
+                        $name = strtoupper($name);
+                    }
+                    echo "<a href='https://guilhermebranco.com.br/" . $project . "/" . $utm . "'>" . $name . "</a><br />\n";
                 }
 ?>
             </div>
