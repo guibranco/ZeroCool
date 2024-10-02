@@ -110,3 +110,12 @@ body {
   float: left;
   padding-top: 25px;
 }
+footer {
+  text-align: center;
+  clear: both;
+  width: 100%;
+  pading: 20px;
+  background: #FFCC00;
+  position: fixed;
+  bottom: 0;
+}
