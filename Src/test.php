@@ -132,6 +132,7 @@ ksort($socialLinks);
       flex-wrap: wrap;
       gap: 20px;
       justify-content: center;
+      width: 84%;
     }
     .project-card {
       background-color: #fff;
