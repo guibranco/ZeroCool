@@ -11,7 +11,7 @@ while ($item = readdir($o)) {
         $item != ".." &&
         !in_array($item, $forbidden)
     ) {
-        $projects[strtolower($item)] = ["screenshot" => "https://picsum.photos/200/300", "description" => $item, "name" => $item, "url" => "https://guilhermebranco.com.br/" . $item . "/" . $utm];
+        $projects[strtolower($item)] = ["screenshot" => "https://picsum.photos/seed/".urlencode($item)."/200/300", "description" => $item, "name" => $item, "url" => "https://guilhermebranco.com.br/" . $item . "/" . $utm];
     }
 }
 closedir($o);
