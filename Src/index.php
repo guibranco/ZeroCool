@@ -1,38 +1,38 @@
 <?php
-   $baseDir = "/home/zerocool/public_html/";
-   $o = opendir($baseDir);
-   $forbidden = array("cgi-bin", "inovacao", "portfolio", "static", ".htpasswds", ".well-known");
-   $projects = array();
-   while ($item = readdir($o)) {
-       if (
-           is_dir($baseDir . $item) &&
-           $item != "." &&
-           $item != ".." &&
-           !in_array($item, $forbidden)
-       ) {
-           $projects[strtolower($item)] = $item;
-       }
-   }
-   closedir($o);
-   ksort($projects);
-   $utm = "?utm_source=zerocool&utm_medium=projects&utm_campaign=old_portfolio";
-   $description = "Portfolio of Guilherme Branco Stracini, senior software engineer, with professional life, experiences, skills, hobbies, and contact information.";
-   
-   $socialLinks = array(
-       "github" => "https://github.com/guibranco",
-       "twitter" => "https://www.twitter.com/GuiBranco",
-       "facebook" => "https://www.facebook.com/guilherme.stracini",
-       "youtube" => "https://www.youtube.com/@GuilhermeBrancoStracini",
-       "pinterest" => "https://pinterest.com/guibranco/",
-       "soundcloud" => "https://soundcloud.com/guilherme-stracini",
-       "linkedin" => "https://www.linkedin.com/in/guilhermestracini",
-       "stackoverflow" => "https://stackoverflow.com/users/1890220/guilherme-branco-stracini",
-       "instagram" => "https://www.instagram.com/guilhermebrancostracini",
-       "whatsapp" => "https://api.whatsapp.com/send/?phone=5511972659788&text=Hello%2C+Guilherme%21"
-   );
-   ksort($socialLinks);
-   
-   ?>
+$baseDir = "/home/zerocool/public_html/";
+$o = opendir($baseDir);
+$forbidden = array("cgi-bin", "inovacao", "portfolio", "static", ".htpasswds", ".well-known");
+$projects = array();
+while ($item = readdir($o)) {
+    if (
+        is_dir($baseDir . $item) &&
+        $item != "." &&
+        $item != ".." &&
+        !in_array($item, $forbidden)
+    ) {
+        $projects[strtolower($item)] = $item;
+    }
+}
+closedir($o);
+ksort($projects);
+$utm = "?utm_source=zerocool&utm_medium=projects&utm_campaign=old_portfolio";
+$description = "Portfolio of Guilherme Branco Stracini, senior software engineer, with professional life, experiences, skills, hobbies, and contact information.";
+
+$socialLinks = array(
+    "github" => "https://github.com/guibranco",
+    "twitter" => "https://www.twitter.com/GuiBranco",
+    "facebook" => "https://www.facebook.com/guilherme.stracini",
+    "youtube" => "https://www.youtube.com/@GuilhermeBrancoStracini",
+    "pinterest" => "https://pinterest.com/guibranco/",
+    "soundcloud" => "https://soundcloud.com/guilherme-stracini",
+    "linkedin" => "https://www.linkedin.com/in/guilhermestracini",
+    "stackoverflow" => "https://stackoverflow.com/users/1890220/guilherme-branco-stracini",
+    "instagram" => "https://www.instagram.com/guilhermebrancostracini",
+    "whatsapp" => "https://api.whatsapp.com/send/?phone=5511972659788&text=Hello%2C+Guilherme%21"
+);
+ksort($socialLinks);
+
+?>
 <!DOCTYPE html>
 <html lang="en">
    <head>
@@ -73,14 +73,14 @@
             <div id="socialLinks">
                <ul>
                   <?php
-                     foreach ($socialLinks as $social => $link) {
-                         echo "<li>\n";
-                         echo "<a href='" . $link . "' rel='noopener' title='Guilherme Branco Stracini on " . ucwords($social) . "' target='_blank'>\n";
-                         echo "<img src='imagens/" . $social . ".png' width='24' height='24' alt='Guilherme Branco Stracini on " . ucwords($social) . "' />\n";
-                         echo "</a>\n";
-                         echo "</li>\n";
-                     }
-                     ?>
+                  foreach ($socialLinks as $social => $link) {
+                      echo "<li>\n";
+                      echo "<a href='" . $link . "' rel='noopener' title='Guilherme Branco Stracini on " . ucwords($social) . "' target='_blank'>\n";
+                      echo "<img src='imagens/" . $social . ".png' width='24' height='24' alt='Guilherme Branco Stracini on " . ucwords($social) . "' />\n";
+                      echo "</a>\n";
+                      echo "</li>\n";
+                  }
+?>
                </ul>
             </div>
          </div>
@@ -97,7 +97,7 @@
                       }
                       echo "<a href='https://guilhermebranco.com.br/" . $project . "/" . $utm . "'>" . $name . "</a><br />\n";
                   }
-                  ?>
+?>
             </div>
          </div>
          <div id="boxes">
