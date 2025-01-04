@@ -50,6 +50,20 @@ header {
   color: orange;
 }
 
+.social-links a:focus {
+  color: orange;
+  outline: 2px solid #fff;
+  outline-offset: 2px;
+}
+
+@media (max-width: 768px) {
+  .social-links {
+    position: static;
+    justify-content: center;
+    margin-top: 10px;
+  }
+}
+
 /* Featured section */
 .featured {
   background-color: #FFD700;
