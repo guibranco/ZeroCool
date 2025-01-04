@@ -113,6 +113,7 @@ main {
   flex: 1;
   width: 80%;
   padding: 20px;
+  margin: auto;
 }
 
 .projects-container {
