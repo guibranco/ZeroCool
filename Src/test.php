@@ -29,7 +29,8 @@ $socialLinks = array(
     "linkedin" => "https://www.linkedin.com/in/guilhermestracini",
     "stackoverflow" => "https://stackoverflow.com/users/1890220/guilherme-branco-stracini",
     "instagram" => "https://www.instagram.com/gui.stracini",
-    "whatsapp" => "https://api.whatsapp.com/send/?phone=5511972659788&text=Hello%2C+Guilherme%21"
+    "whatsapp" => "https://api.whatsapp.com/send/?phone=5511972659788&text=Hello%2C+Guilherme%21",
+    "wordpress" => "https://blog.guilhermebranco.com.br"
 );
 ksort($socialLinks);
 
