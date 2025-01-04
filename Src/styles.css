@@ -25,14 +25,14 @@ body {
 }
 #header #top #socialLinks {
   height: 24px;
-  width: 480px;
+  width: 528px;
   margin-top: 12px;
   margin-left: 498px;
 }
 #header #top #socialLinks ul {
   list-style-type: none;
   display: block;
-  width: 480px;
+  width: 528px;
   height: 24px;
 }
 #header #top #socialLinks ul li {
