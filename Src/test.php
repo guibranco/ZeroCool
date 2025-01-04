@@ -201,6 +201,17 @@ ksort($socialLinks);
       text-align: center;
       padding: 15px;
     }
+
+        @media (max-width: 768px) {
+  .facebook-widget {
+    position: relative;
+    top: auto;
+    right: auto;
+    margin: 20px auto;
+    width: 100%;
+    max-width: 300px; /* Keeps the original widget width */
+  }
+}
   </style>
   </head>
   <body>
