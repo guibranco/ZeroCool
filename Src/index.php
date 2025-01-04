@@ -56,7 +56,7 @@ ksort($socialLinks);
     <meta property="fb:admins" content="1614826774" />
     <base href="https://zerocool.com.br/portfolio/" />
     <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
-    <link rel="stylesheet" href="styles-test.css?<?php echo filemtime("styles-test.css"); ?>">
+    <link rel="stylesheet" href="styles.css?<?php echo filemtime("styles.css"); ?>">
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-4KQXFWPLV8"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
