@@ -107,6 +107,32 @@ ksort($socialLinks);
       color: orange;
     }
 
+        /* Featured section */
+        .featured {
+            background-color: #FFD700;
+            color: #000;
+            text-align: center;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .featured a {
+            display: inline-block;
+            margin: 10px;
+            padding: 10px 20px;
+            background-color: #000;
+            color: #FFD700;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        .featured a:hover {
+            background-color: #FFD700;
+            color: #000;
+        }
+
     /* Facebook widget */
     .facebook-widget {
       position: fixed;
@@ -189,6 +215,13 @@ ksort($socialLinks);
 ?>
       </div>
     </header>
+
+    <!-- Featured section -->
+    <section class="featured">
+        <h2>Explore More</h2>
+        <a href="https://blog.guilhermebranco.com.br" target="_blank" rel="noopener">Visit My Blog</a>
+        <a href="https://guilhermebranco.com.br" target="_blank" rel="noopener">View My New Portfolio</a>
+    </section>
 
     <!-- Facebook widget container -->
     <div class="facebook-widget">
