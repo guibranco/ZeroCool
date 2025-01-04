@@ -202,6 +202,40 @@ ksort($socialLinks);
       padding: 15px;
     }
 
+        /* Footer */
+footer {
+  background-color: #FFD700;
+  color: #333;
+  text-align: center;
+  padding: 15px;
+  font-size: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Responsive adjustments */
+@media (min-width: 768px) {
+  footer {
+    flex-direction: row; /* Horizontal layout for larger screens */
+    justify-content: space-between;
+    padding: 20px 40px;
+    text-align: left;
+  }
+
+  footer div {
+    margin: 0 15px;
+  }
+}
+
+@media (max-width: 767px) {
+  footer {
+    font-size: 14px; /* Smaller font size for small screens */
+    padding: 10px;
+  }
+}
+
+
         @media (max-width: 768px) {
   .facebook-widget {
     position: relative;
