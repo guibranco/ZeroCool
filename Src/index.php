@@ -82,7 +82,7 @@ ksort($socialLinks);
         <h2>Explore More</h2>
         <a href="https://blog.guilhermebranco.com.br" target="_blank" rel="noopener">Visit My Blog</a>
         <a href="https://guilhermebranco.com.br" target="_blank" rel="noopener">View My New Portfolio</a>
-        <a href="https://bot.straccini.com" target="_blank" rel="noopener">View GitHub bot</a>
+        <a href="https://bot.straccini.com" target="_blank" rel="noopener">View My GitHub bot</a>
     </section>
 
     <div class="facebook-widget">
