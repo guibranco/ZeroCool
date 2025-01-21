@@ -78,14 +78,13 @@ ksort($socialLinks);
       </div>
     </header>
 
-    <!-- Featured section -->
     <section class="featured">
         <h2>Explore More</h2>
         <a href="https://blog.guilhermebranco.com.br" target="_blank" rel="noopener">Visit My Blog</a>
         <a href="https://guilhermebranco.com.br" target="_blank" rel="noopener">View My New Portfolio</a>
+        <a href="https://bot.straccini.com" target="_blank" rel="noopener">View GitHub bot</a>
     </section>
 
-    <!-- Facebook widget container -->
     <div class="facebook-widget">
       <iframe
         src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fguilhermebrancostracini&tabs=timeline&width=300&height=400&small_header=true&adapt_container_width=true&hide_cover=false&show_facepile=true&appId"
@@ -103,7 +102,6 @@ ksort($socialLinks);
       <section class="projects-container">
         <?php
 foreach ($projects as $project) {
-    // Assuming $project is an associative array with 'screenshot', 'name', 'description', and 'url' keys
     $name = ucwords(str_replace("_", " ", str_replace("-", " ", $project['name'])));
     if (strlen($name) <= 3) {
         $name = strtoupper($name);
