@@ -80,9 +80,9 @@ ksort($socialLinks);
 
     <section class="featured">
         <h2>Explore More</h2>
-        <a href="https://blog.guilhermebranco.com.br" target="_blank" rel="noopener"><img src="imagens/wordpress.png" width="24" height="24" alt="Guilherme Branco Stracini on Wordpress"> Blog</a>
-        <a href="https://guilhermebranco.com.br" target="_blank" rel="noopener"><img src="images/guilhermestraccini.png"  width="24" height="24"> New Portfolio</a>
-        <a href="https://bot.straccini.com" target="_blank" rel="noopener"><img src="images/gstraccini-bot.png"  width="24" height="24">  GitHub bot</a>
+        <a href="https://blog.guilhermebranco.com.br" target="_blank" rel="noopener"><img src="imagens/wordpress.png" alt="Guilherme Branco Stracini on Wordpress"> Blog</a>
+        <a href="https://guilhermebranco.com.br" target="_blank" rel="noopener"><img src="imagens/guilhermestraccini.png" alt="Guilherme Branco Stracini new portfolio"> New Portfolio</a>
+        <a href="https://bot.straccini.com" target="_blank" rel="noopener"><img src="imagens/gstraccini-bot.png" alt="GStracini-bot - GitHub bot"> GitHub bot</a>
     </section>
 
     <div class="facebook-widget">
