@@ -93,6 +93,11 @@ header {
   color: #000;
 }
 
+.featured a img {
+  width: 24px;
+  height: 24px;
+  vertical-align: middle;
+}
 /* Facebook widget */
 .facebook-widget {
   position: fixed;
