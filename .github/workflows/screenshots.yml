@@ -2,7 +2,7 @@ name: Website monitoring
 
 on:
   schedule:
-    - cron: "0 */6 * * *" # every 6 hours
+    - cron: "0 */6 * * *"
   workflow_dispatch:
 
 jobs:
@@ -13,7 +13,7 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Run screenshot monitoring
-        uses: guibranco/github-screenshot-action@v1.1.0
+        uses: guibranco/github-screenshot-action@v1.1.1
         with:
           json_file: "sites.json"
           output_dir: "Src/imagens/screenshots/"
