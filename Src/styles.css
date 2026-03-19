@@ -147,6 +147,7 @@ main {
 .project-image {
   max-width: 100%;
   height: auto;
+  max-height: 20em;
   border-radius: 5px;
   border: 1px solid #ccc;
 }
