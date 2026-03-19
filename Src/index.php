@@ -1,7 +1,7 @@
 <?php
 $baseDir = "/home/zerocool/public_html/";
 $screenshotDir = $baseDir . "portfolio/imagens/screenshots/";
-$screenshotUrlBase = "https://zerocool.com.br/imagens/screenshots/";
+$screenshotUrlBase = "https://zerocool.com.br/portfolio/imagens/screenshots/";
 $utm = "?utm_source=zerocool&utm_medium=projects&utm_campaign=old_portfolio";
 $o = opendir($baseDir);
 $forbidden = array("cgi-bin", "inovacao", "portfolio", "static", ".htpasswds", ".well-known");
