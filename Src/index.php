@@ -1,6 +1,6 @@
 <?php
 $baseDir = "/home/zerocool/public_html/";
-$screenshotDir = $baseDir . "imagens/screenshots/";
+$screenshotDir = $baseDir . "portfolio/imagens/screenshots/";
 $screenshotUrlBase = "https://zerocool.com.br/imagens/screenshots/";
 $utm = "?utm_source=zerocool&utm_medium=projects&utm_campaign=old_portfolio";
 $o = opendir($baseDir);
@@ -16,10 +16,10 @@ while ($item = readdir($o)) {
     ) {
         $normalized = strtolower($item);
         $screenshotFile = $screenshotDir . $normalized . ".png";
-        $screenshotUrl = $screenshotUrlBase . $normalized . ".png?v=" . filemtime($screenshotFile);
+        $screenshotUrl = $screenshotUrlBase . $normalized . ".png";
 
         if (file_exists($screenshotFile)) {
-            $image = $screenshotUrl;
+            $image = $screenshotUrl . "?v=" . filemtime($screenshotFile);;
         } else {
             $image = "https://picsum.photos/seed/" . urlencode($item . time()) . "/300";
         }
