@@ -20,3 +20,7 @@ jobs:
           concurrency: "5"
           retries: "2"
           timeout_ms: "20000"
+          create_pr: "true"
+          branch_name: "monitor/screenshots"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
