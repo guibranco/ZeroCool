@@ -1,0 +1,22 @@
+[
+  { "url": "https://guilhermebranco.com.br/accounts-balance/", "name": "accounts-balance" },
+  { "url": "https://guilhermebranco.com.br/bom-negocio-rv/", "name": "bom-negocio-rv" },
+  { "url": "https://guilhermebranco.com.br/bookmarks-manager-api/", "name": "bookmarks-manager-api" },
+  { "url": "https://guilhermebranco.com.br/bot/", "name": "bot" },
+  { "url": "https://guilhermebranco.com.br/bot-api/", "name": "bot-api" },
+  { "url": "https://guilhermebranco.com.br/bot-docs/", "name": "bot-docs" },
+  { "url": "https://guilhermebranco.com.br/bot-playground/", "name": "bot-playground" },
+  { "url": "https://guilhermebranco.com.br/currencies/", "name": "currencies" },
+  { "url": "https://guilhermebranco.com.br/desafios/", "name": "desafios" },
+  { "url": "https://guilhermebranco.com.br/eteca/", "name": "eteca" },
+  { "url": "https://guilhermebranco.com.br/gbranco/", "name": "gbranco" },
+  { "url": "https://guilhermebranco.com.br/htmlbrasil/", "name": "htmlbrasil" },
+  { "url": "https://guilhermebranco.com.br/poc-php-mvc/", "name": "poc-php-mvc" },
+  { "url": "https://guilhermebranco.com.br/projects-monitor/", "name": "projects-monitor" },
+  { "url": "https://guilhermebranco.com.br/sms/", "name": "sms" },
+  { "url": "https://guilhermebranco.com.br/sports-agenda/", "name": "sports-agenda" },
+  { "url": "https://guilhermebranco.com.br/TCC-SENAC/", "name": "TCC-SENAC" },
+  { "url": "https://guilhermebranco.com.br/ui/", "name": "ui" },
+  { "url": "https://guilhermebranco.com.br/vagas/", "name": "vagas" },
+  { "url": "https://guilhermebranco.com.br/webhooks/", "name": "webhooks" }
+]
