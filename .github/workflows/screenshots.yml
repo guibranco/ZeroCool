@@ -10,10 +10,6 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
-        with:
-          path: temp_repo
-
       - name: Run screenshot monitoring
         uses: guibranco/github-screenshot-action@v1.0.2
         with:
