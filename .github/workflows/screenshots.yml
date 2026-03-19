@@ -1,0 +1,24 @@
+name: Website monitoring
+
+on:
+  schedule:
+    - cron: "0 */6 * * *" # every 6 hours
+  workflow_dispatch:
+
+jobs:
+  monitor:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Run screenshot monitoring
+        uses: guibranco/github-screenshot-action@v0.0.1
+        with:
+          json_file: "sites.json"
+          output_dir: "Src/imagens/screenshots/"
+          concurrency: "5"
+          retries: "2"
+          timeout_ms: "20000"
+          create_pr: "true"
+          branch_name: "monitor/screenshots"
