@@ -11,14 +11,12 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
-        with:
-          path: temp_repo
 
       - name: Run screenshot monitoring
-        uses: guibranco/github-screenshot-action@v1.0.2
+        uses: guibranco/github-screenshot-action@v1.1.0
         with:
-          json_file: "temp_repo/sites.json"
-          output_dir: "temp_repo/Src/imagens/screenshots/"
+          json_file: "sites.json"
+          output_dir: "Src/imagens/screenshots/"
           concurrency: "5"
           retries: "2"
           timeout_ms: "20000"
