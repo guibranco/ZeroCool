@@ -1,9 +1,12 @@
 <?php
 $baseDir = "/home/zerocool/public_html/";
+$screenshotDir = $baseDir . "imagens/screenshots/";
+$screenshotUrlBase = "https://zerocool.com.br/imagens/screenshots/";
 $utm = "?utm_source=zerocool&utm_medium=projects&utm_campaign=old_portfolio";
 $o = opendir($baseDir);
 $forbidden = array("cgi-bin", "inovacao", "portfolio", "static", ".htpasswds", ".well-known");
 $projects = array();
+
 while ($item = readdir($o)) {
     if (
         is_dir($baseDir . $item) &&
@@ -11,9 +14,25 @@ while ($item = readdir($o)) {
         $item != ".." &&
         !in_array($item, $forbidden)
     ) {
-        $projects[strtolower($item)] = ["screenshot" => "https://picsum.photos/seed/".urlencode($item.time())."/300", "description" => $item, "name" => $item, "url" => "https://guilhermebranco.com.br/" . $item . "/" . $utm];
+        $normalized = strtolower($item);
+        $screenshotFile = $screenshotDir . $normalized . ".png";
+        $screenshotUrl = $screenshotUrlBase . $normalized . ".png?v=" . filemtime($screenshotFile);
+
+        if (file_exists($screenshotFile)) {
+            $image = $screenshotUrl;
+        } else {
+            $image = "https://picsum.photos/seed/" . urlencode($item . time()) . "/300";
+        }
+
+        $projects[$normalized] = [
+            "screenshot" => $image,
+            "description" => $item,
+            "name" => $item,
+            "url" => "https://guilhermebranco.com.br/" . $item . "/" . $utm
+        ];
     }
 }
+
 closedir($o);
 ksort($projects);
 
@@ -107,7 +126,7 @@ foreach ($projects as $project) {
         $name = strtoupper($name);
     }
     echo "<div class='project-card'>\n";
-    echo "  <img src='" . htmlspecialchars($project['screenshot'], ENT_QUOTES, 'UTF-8') . "' alt='Project Screenshot' class='project-image'>\n";
+    echo "  <img loading='lazy' src='" . htmlspecialchars($project['screenshot'], ENT_QUOTES, 'UTF-8') . "' alt='Project Screenshot' class='project-image'>\n";
     echo "  <h2 class='project-name'>" . htmlspecialchars($name, ENT_QUOTES, 'UTF-8') . "</h2>\n";
     echo "  <p class='project-description'>" . htmlspecialchars($project['description'], ENT_QUOTES, 'UTF-8') . "</p>\n";
     echo "  <a href='" . htmlspecialchars($project['url'], ENT_QUOTES, 'UTF-8') . "' class='project-link' target='_blank'>View Project</a>\n";
