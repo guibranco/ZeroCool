@@ -28,7 +28,7 @@ echo '<?xml version="1.0" encoding="UTF-8"?>' . "\n";
 echo '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">' . "\n";
 
 echo "  <url>\n";
-echo "    <loc>" . htmlspecialchars($siteBase, ENT_XML1, "UTF-8") . "</loc>\n";
+echo "    <loc>" . htmlspecialchars($siteBase, ENT_XML1, "UTF-8") . "/portfolio</loc>\n";
 echo "    <changefreq>weekly</changefreq>\n";
 echo "    <priority>1.0</priority>\n";
 echo "  </url>\n";
