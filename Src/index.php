@@ -1,58 +1,25 @@
 <?php
-$baseDir = "/home/zerocool/public_html/";
-$screenshotDir = $baseDir . "portfolio/imagens/screenshots/";
-$screenshotUrlBase = "https://zerocool.com.br/portfolio/imagens/screenshots/";
-$utm = "?utm_source=zerocool&utm_medium=projects&utm_campaign=old_portfolio";
-$o = opendir($baseDir);
-$forbidden = array("cgi-bin", "inovacao", "portfolio", "static", ".htpasswds", ".well-known");
-$projects = array();
+require_once __DIR__ . '/functions.php';
 
-while ($item = readdir($o)) {
-    if (
-        is_dir($baseDir . $item) &&
-        $item != "." &&
-        $item != ".." &&
-        !in_array($item, $forbidden)
-    ) {
-        $normalized = strtolower($item);
-        $screenshotFile = $screenshotDir . $normalized . ".png";
-        $screenshotUrl = $screenshotUrlBase . $normalized . ".png";
-
-        if (file_exists($screenshotFile)) {
-            $image = $screenshotUrl . "?v=" . filemtime($screenshotFile);;
-        } else {
-            $image = "https://picsum.photos/seed/" . urlencode($item . time()) . "/300";
-        }
-
-        $projects[$normalized] = [
-            "screenshot" => $image,
-            "description" => $item,
-            "name" => $item,
-            "url" => "https://guilhermebranco.com.br/" . $item . "/" . $utm
-        ];
-    }
-}
-
-closedir($o);
-ksort($projects);
+$utm = '?utm_source=zerocool&utm_medium=projects&utm_campaign=old_portfolio';
+$projects = getProjects($utm);
 
 $description = "Portfolio of Guilherme Branco Stracini, senior software engineer, with professional life, experiences, skills, hobbies, and contact information.";
 
-$socialLinks = array(
-    "github" => "https://github.com/guibranco",
-    "twitter" => "https://www.twitter.com/GuiBranco",
-    "facebook" => "https://www.facebook.com/guilherme.stracini",
-    "youtube" => "https://www.youtube.com/@GuilhermeBrancoStracini",
-    "pinterest" => "https://pinterest.com/guibranco/",
-    "soundcloud" => "https://soundcloud.com/guilherme-stracini",
-    "linkedin" => "https://www.linkedin.com/in/guilhermestracini",
+$socialLinks = [
+    "facebook"      => "https://www.facebook.com/guilherme.stracini",
+    "github"        => "https://github.com/guibranco",
+    "instagram"     => "https://www.instagram.com/gui.stracini",
+    "linkedin"      => "https://www.linkedin.com/in/guilhermestracini",
+    "pinterest"     => "https://pinterest.com/guibranco/",
+    "soundcloud"    => "https://soundcloud.com/guilherme-stracini",
     "stackoverflow" => "https://stackoverflow.com/users/1890220/guilherme-branco-stracini",
-    "instagram" => "https://www.instagram.com/gui.stracini",
-    "whatsapp" => "https://api.whatsapp.com/send/?phone=5511972659788&text=Hello%2C+Guilherme%21",
-    "wordpress" => "https://blog.guilhermebranco.com.br"
-);
+    "twitter"       => "https://www.twitter.com/GuiBranco",
+    "whatsapp"      => "https://api.whatsapp.com/send/?phone=5511972659788&text=Hello%2C+Guilherme%21",
+    "wordpress"     => "https://blog.guilhermebranco.com.br",
+    "youtube"       => "https://www.youtube.com/@GuilhermeBrancoStracini",
+];
 ksort($socialLinks);
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -66,42 +33,41 @@ ksort($socialLinks);
     <meta property="og:title" content="Guilherme Branco Stracini - Senior Software Engineer" />
     <meta property="og:site_name" content="Guilherme Branco Stracini - Senior Software Engineer" />
     <meta property="og:description" content="<?php echo $description; ?>" />
-    <meta property="og:image" content="https://zerocool.com.br/portfolio/imagens/icone.png" />
+    <meta property="og:image" content="<?php echo PORTFOLIO_BASE; ?>imagens/icone.png" />
     <meta property="og:image:type" content="image/png" />
     <meta property="og:image:width" content="250" />
     <meta property="og:image:height" content="250" />
     <meta property="og:type" content="website" />
     <meta property="fb:app_id" content="290252964970555" />
     <meta property="fb:admins" content="1614826774" />
-    <base href="https://zerocool.com.br/portfolio/" />
+    <base href="<?php echo PORTFOLIO_BASE; ?>" />
     <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
-    <link rel="stylesheet" href="styles.css?<?php echo filemtime("styles.css"); ?>">
+    <link rel="stylesheet" href="styles.css?<?php echo filemtime('styles.css'); ?>">
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-4KQXFWPLV8"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
         function gtag() { dataLayer.push(arguments); }
         gtag('js', new Date());
         gtag('config', 'G-4KQXFWPLV8');
-    </script>    
+    </script>
   </head>
   <body>
     <header>
       <div class="social-links">
-        <?php
-                    foreach ($socialLinks as $social => $link) {
-                        echo "<a href='" . $link . "' rel='noopener' title='Guilherme Branco Stracini on " . ucwords($social) . "' target='_blank'>\n";
-                        echo "<img src='imagens/" . $social . ".png' width='24' height='24' alt='Guilherme Branco Stracini on " . ucwords($social) . "' />\n";
-                        echo "</a>\n";
-                    }
-?>
+        <?php foreach ($socialLinks as $social => $link): ?>
+        <a href="<?php echo $link; ?>" rel="noopener" title="Guilherme Branco Stracini on <?php echo ucwords($social); ?>" target="_blank">
+          <img src="imagens/<?php echo $social; ?>.png" width="24" height="24" alt="Guilherme Branco Stracini on <?php echo ucwords($social); ?>" />
+        </a>
+        <?php endforeach; ?>
       </div>
     </header>
 
     <section class="featured">
-        <h2>Explore More</h2>
-        <a href="https://blog.guilhermebranco.com.br" target="_blank" rel="noopener"><img src="imagens/wordpress.png" alt="Guilherme Branco Stracini on Wordpress"> Blog</a>
-        <a href="https://guilhermebranco.com.br" target="_blank" rel="noopener"><img src="imagens/guilhermestraccini.png" alt="Guilherme Branco Stracini new portfolio"> New Portfolio</a>
-        <a href="https://bot.straccini.com" target="_blank" rel="noopener"><img src="imagens/gstraccini-bot.png" alt="GStracini-bot - GitHub bot"> GitHub bot</a>
+      <h2>Explore More</h2>
+      <a href="https://blog.guilhermebranco.com.br" target="_blank" rel="noopener"><img src="imagens/wordpress.png" alt="Guilherme Branco Stracini on Wordpress"> Blog</a>
+      <a href="https://guilherme.stracini.com.br/blog" target="_blank" rel="noopener"><img src="imagens/github.png" alt="Guilherme Branco Stracini on GitHub Pages"> Blog (Tecnologia & Viagens)</a>
+      <a href="https://guilhermebranco.com.br" target="_blank" rel="noopener"><img src="imagens/guilhermestraccini.png" alt="Guilherme Branco Stracini new portfolio"> New Portfolio</a>
+      <a href="https://bot.straccini.com" target="_blank" rel="noopener"><img src="imagens/gstraccini-bot.png" alt="GStracini-bot - GitHub bot"> GitHub bot</a>
     </section>
 
     <div class="facebook-widget">
@@ -119,21 +85,19 @@ ksort($socialLinks);
 
     <main>
       <section class="projects-container">
-        <?php
-foreach ($projects as $project) {
-    $name = ucwords(str_replace("_", " ", str_replace("-", " ", $project['name'])));
-    if (strlen($name) <= 3) {
-        $name = strtoupper($name);
-    }
-    echo "<div class='project-card'>\n";
-    echo "  <img loading='lazy' src='" . htmlspecialchars($project['screenshot'], ENT_QUOTES, 'UTF-8') . "' alt='Project Screenshot' class='project-image'>\n";
-    echo "  <h2 class='project-name'>" . htmlspecialchars($name, ENT_QUOTES, 'UTF-8') . "</h2>\n";
-    echo "  <p class='project-description'>" . htmlspecialchars($project['description'], ENT_QUOTES, 'UTF-8') . "</p>\n";
-    echo "  <a href='" . htmlspecialchars($project['url'], ENT_QUOTES, 'UTF-8') . "' class='project-link' target='_blank'>View Project</a>\n";
-    echo "</div>\n";
-}
-?>
-
+        <?php foreach ($projects as $project):
+            $name = ucwords(str_replace('_', ' ', str_replace('-', ' ', $project['name'])));
+            if (strlen($name) <= 3) {
+                $name = strtoupper($name);
+            }
+        ?>
+        <div class="project-card">
+          <img loading="lazy" src="<?php echo htmlspecialchars($project['screenshot'], ENT_QUOTES, 'UTF-8'); ?>" alt="Project Screenshot" class="project-image">
+          <h2 class="project-name"><?php echo htmlspecialchars($name, ENT_QUOTES, 'UTF-8'); ?></h2>
+          <p class="project-description"><?php echo htmlspecialchars($project['description'], ENT_QUOTES, 'UTF-8'); ?></p>
+          <a href="<?php echo htmlspecialchars($project['url'], ENT_QUOTES, 'UTF-8'); ?>" class="project-link" target="_blank">View Project</a>
+        </div>
+        <?php endforeach; ?>
       </section>
     </main>
 
