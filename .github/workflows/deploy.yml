@@ -46,7 +46,7 @@ jobs:
       - name: Zip files
         run: |
           cd Src
-          zip -r deploy.zip . -x install.php -x secrets.php
+          zip -r deploy.zip . -x install.php
           cd ..
           mkdir Deploy
           mv Src/deploy.zip Deploy
