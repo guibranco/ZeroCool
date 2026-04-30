@@ -1,0 +1,97 @@
+<?php
+require_once __DIR__ . '/secrets.php';
+
+$isCli = PHP_SAPI === 'cli';
+
+if (!$isCli) {
+    $provided = $_GET['token'] ?? '';
+    if (!hash_equals(FETCH_TOKEN, $provided)) {
+        http_response_code(403);
+        header('Content-Type: application/json');
+        echo json_encode(['error' => 'Forbidden']);
+        exit;
+    }
+    header('Content-Type: application/json');
+}
+
+$token = GH_PAT;
+$sites = [];
+$page  = 1;
+
+if ($isCli) {
+    echo "Fetching repositories from GitHub API...\n";
+}
+
+do {
+    $url = "https://api.github.com/user/repos?per_page=100&page={$page}&type=all";
+
+    $ch = curl_init($url);
+    curl_setopt_array($ch, [
+        CURLOPT_RETURNTRANSFER => true,
+        CURLOPT_HTTPHEADER     => [
+            "Authorization: Bearer {$token}",
+            "Accept: application/vnd.github+json",
+            "X-GitHub-Api-Version: 2022-11-28",
+            "User-Agent: ZeroCool-Portfolio",
+        ],
+    ]);
+
+    $response = curl_exec($ch);
+    $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+    curl_close($ch);
+
+    if ($httpCode !== 200) {
+        if ($isCli) {
+            fwrite(STDERR, "GitHub API error on page {$page}: HTTP {$httpCode}\n{$response}\n");
+            exit(1);
+        }
+        http_response_code(500);
+        echo json_encode(['error' => "GitHub API error: HTTP {$httpCode}"]);
+        exit;
+    }
+
+    $repos = json_decode($response, true);
+
+    if (!is_array($repos)) {
+        if ($isCli) {
+            fwrite(STDERR, "Invalid JSON response on page {$page}\n");
+            exit(1);
+        }
+        http_response_code(500);
+        echo json_encode(['error' => 'Invalid JSON response from GitHub API']);
+        exit;
+    }
+
+    if ($isCli) {
+        echo "Page {$page}: fetched " . count($repos) . " repositories.\n";
+    }
+
+    foreach ($repos as $repo) {
+        if (!empty($repo['homepage']) && $repo['has_pages'] === true) {
+            $sites[] = [
+                'name'        => $repo['name'],
+                'description' => $repo['description'] ?? '',
+                'html_url'    => $repo['html_url'],
+                'homepage'    => $repo['homepage'],
+                'owner'       => $repo['owner']['login'],
+            ];
+        }
+    }
+
+    $page++;
+
+} while (count($repos) === 100);
+
+usort($sites, fn($a, $b) => strcmp($a['name'], $b['name']));
+
+file_put_contents(
+    __DIR__ . '/github-sites.json',
+    json_encode($sites, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE) . "\n"
+);
+
+if ($isCli) {
+    echo "Found " . count($sites) . " repositories with homepage URLs.\n";
+    echo "Output written to github-sites.json\n";
+} else {
+    echo json_encode(['success' => true, 'count' => count($sites)]);
+}

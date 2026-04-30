@@ -38,6 +38,20 @@ function getProjectSlugs(): array {
 }
 
 /**
+ * Loads GitHub Pages sites from the pre-generated JSON file.
+ *
+ * @return array<array{name: string, description: string, html_url: string, homepage: string, owner: string}>
+ */
+function getGitHubPagesSites(): array {
+    $jsonFile = __DIR__ . '/github-sites.json';
+    if (!file_exists($jsonFile)) {
+        return [];
+    }
+    $data = json_decode(file_get_contents($jsonFile), true);
+    return is_array($data) ? $data : [];
+}
+
+/**
  * Builds the full projects array with screenshot, description, name and URL,
  * as needed by index.php.
  *

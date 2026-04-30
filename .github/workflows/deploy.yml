@@ -29,10 +29,24 @@ jobs:
         id: gitversion
         uses: gittools/actions/gitversion/execute@v4
 
+      - name: Generate secrets.php
+        run: |
+          {
+            echo "<?php"
+            echo "define('GH_PAT', '${{ secrets.GH_PAT }}');"
+            echo "define('FETCH_TOKEN', '${{ secrets.FETCH_TOKEN }}');"
+          } > Src/secrets.php
+
+      - name: Fetch GitHub Pages sites
+        run: php Src/fetch-github-sites.php
+
+      - name: Copy github-sites.json to repo root
+        run: cp Src/github-sites.json github-sites.json
+
       - name: Zip files
         run: |
           cd Src
-          zip -r deploy.zip . -x install.php
+          zip -r deploy.zip . -x install.php -x secrets.php
           cd ..
           mkdir Deploy
           mv Src/deploy.zip Deploy
