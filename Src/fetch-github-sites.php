@@ -51,6 +51,9 @@ $sites  = [];
 $report = [];
 $page   = 1;
 
+$sitesJson      = @file_get_contents(dirname(__DIR__) . '/sites.json');
+$sitesJsonNames = array_column(json_decode($sitesJson ?: '[]', true) ?? [], 'name');
+
 if ($isCli) echo "Fetching repositories from GitHub API...\n";
 
 do {
@@ -99,14 +102,15 @@ do {
         $hasHomepage = !empty($repo['homepage']);
         $hasPages    = $repo['has_pages'] === true;
 
-        $group = match (true) {
-            $hasPages  && $hasHomepage  => 'has_pages && homepage',
-            $hasPages  && !$hasHomepage => 'has_pages && no homepage',
-            !$hasPages && $hasHomepage  => 'no has_pages && homepage',
-            default                     => 'no has_pages && no homepage',
-        };
-
-        $report[] = [$repo['owner']['login'], $repo['name'], $group];
+        $report[] = [
+            $repo['owner']['login'],
+            $repo['name'],
+            $hasPages    ? 'true' : 'false',
+            $hasHomepage ? 'true' : 'false',
+            ($repo['private'] === true)                       ? 'true' : 'false',
+            in_array($repo['name'], $sitesJsonNames, true)    ? 'true' : 'false',
+            $repo['homepage'] ?? '',
+        ];
 
         if ($hasHomepage && $hasPages) {
             $sites[] = [
@@ -152,8 +156,8 @@ file_put_contents(
 if ($isCli) {
     $csvPath = dirname(__DIR__) . '/github-pages-report.csv';
     $fh = fopen($csvPath, 'w');
-    fputcsv($fh, ['owner', 'name', 'group']);
-    usort($report, fn($a, $b) => $a[2] <=> $b[2] ?: strcmp($a[0], $b[0]) ?: strcmp($a[1], $b[1]));
+    fputcsv($fh, ['owner', 'repository name', 'has pages', 'homepage', 'private', 'in sites.json', 'homepage url']);
+    usort($report, fn($a, $b) => strcmp($a[0], $b[0]) ?: strcmp($a[1], $b[1]));
     foreach ($report as $row) {
         fputcsv($fh, $row);
     }
