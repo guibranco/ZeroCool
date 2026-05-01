@@ -137,7 +137,9 @@ ksort($socialLinks);
               $siteDesc    = htmlspecialchars($site['description'] ?? '', ENT_QUOTES, 'UTF-8');
               $siteHome    = htmlspecialchars($site['homepage'], ENT_QUOTES, 'UTF-8');
               $siteRepo    = htmlspecialchars($site['html_url'], ENT_QUOTES, 'UTF-8');
-              $ogImage     = htmlspecialchars('https://opengraph.githubassets.com/1/' . $site['owner'] . '/' . $site['name'], ENT_QUOTES, 'UTF-8');
+              $ogImage     = !empty($site['og_image'])
+                  ? htmlspecialchars(PORTFOLIO_BASE . 'imagens/github-pages/' . $site['og_image'], ENT_QUOTES, 'UTF-8')
+                  : htmlspecialchars('https://opengraph.githubassets.com/1/' . $site['owner'] . '/' . $site['name'], ENT_QUOTES, 'UTF-8');
               $displayName = ucwords(str_replace(['-', '_'], ' ', $site['name']));
               if (strlen($displayName) <= 3) {
                   $displayName = strtoupper($displayName);

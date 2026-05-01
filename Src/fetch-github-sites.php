@@ -14,13 +14,43 @@ if (!$isCli) {
     header('Content-Type: application/json');
 }
 
+function fetchOgImage(string $owner, string $repo, string $cacheDir, bool $isCli): string
+{
+    $filename  = "{$owner}-{$repo}.png";
+    $cachePath = $cacheDir . '/' . $filename;
+
+    if (file_exists($cachePath)) {
+        if ($isCli) echo "  [cache] {$filename}\n";
+        return $filename;
+    }
+
+    $ch = curl_init("https://opengraph.githubassets.com/1/{$owner}/{$repo}");
+    curl_setopt_array($ch, [
+        CURLOPT_RETURNTRANSFER => true,
+        CURLOPT_FOLLOWLOCATION => true,
+        CURLOPT_TIMEOUT        => 15,
+        CURLOPT_USERAGENT      => 'ZeroCool-Portfolio',
+    ]);
+
+    $data     = curl_exec($ch);
+    $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+    curl_close($ch);
+
+    if ($httpCode === 200 && !empty($data)) {
+        file_put_contents($cachePath, $data);
+        if ($isCli) echo "  [fetch] {$filename}\n";
+        return $filename;
+    }
+
+    if ($isCli) fwrite(STDERR, "  [error] {$owner}/{$repo}: HTTP {$httpCode}\n");
+    return '';
+}
+
 $token = GH_PAT;
 $sites = [];
 $page  = 1;
 
-if ($isCli) {
-    echo "Fetching repositories from GitHub API...\n";
-}
+if ($isCli) echo "Fetching repositories from GitHub API...\n";
 
 do {
     $url = "https://api.github.com/user/repos?per_page=100&page={$page}&type=all";
@@ -62,9 +92,7 @@ do {
         exit;
     }
 
-    if ($isCli) {
-        echo "Page {$page}: fetched " . count($repos) . " repositories.\n";
-    }
+    if ($isCli) echo "Page {$page}: fetched " . count($repos) . " repositories.\n";
 
     foreach ($repos as $repo) {
         if (!empty($repo['homepage']) && $repo['has_pages'] === true) {
@@ -84,13 +112,25 @@ do {
 
 usort($sites, fn($a, $b) => strcmp($a['name'], $b['name']));
 
+$cacheDir = __DIR__ . '/imagens/github-pages';
+if (!is_dir($cacheDir)) {
+    mkdir($cacheDir, 0755, true);
+}
+
+if ($isCli) echo "\nCaching OpenGraph images...\n";
+
+foreach ($sites as &$site) {
+    $site['og_image'] = fetchOgImage($site['owner'], $site['name'], $cacheDir, $isCli);
+}
+unset($site);
+
 file_put_contents(
     __DIR__ . '/github-sites.json',
     json_encode($sites, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE) . "\n"
 );
 
 if ($isCli) {
-    echo "Found " . count($sites) . " repositories with homepage URLs.\n";
+    echo "\nFound " . count($sites) . " repositories with homepage URLs.\n";
     echo "Output written to github-sites.json\n";
 } else {
     echo json_encode(['success' => true, 'count' => count($sites)]);
