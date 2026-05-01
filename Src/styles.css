@@ -276,6 +276,15 @@ main {
   border-bottom: 1px solid var(--border);
 }
 
+.owner-link {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: opacity var(--transition);
+}
+
+.owner-link:hover { opacity: 0.75; }
+
 .owner-avatar {
   width: 28px;
   height: 28px;

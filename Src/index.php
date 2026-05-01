@@ -146,11 +146,16 @@ ksort($socialLinks);
         <?php foreach ($byOwner as $owner => $ownerSites): ?>
         <div class="owner-group">
           <div class="owner-header">
-            <img src="https://github.com/<?php echo htmlspecialchars($owner, ENT_QUOTES, 'UTF-8'); ?>.png?size=40"
-                 class="owner-avatar"
-                 alt="<?php echo htmlspecialchars($owner, ENT_QUOTES, 'UTF-8'); ?>"
-                 loading="lazy">
-            <h3 class="owner-name"><?php echo htmlspecialchars($owner, ENT_QUOTES, 'UTF-8'); ?></h3>
+            <a href="https://github.com/<?php echo htmlspecialchars($owner, ENT_QUOTES, 'UTF-8'); ?>"
+               class="owner-link"
+               target="_blank"
+               rel="noopener">
+              <img src="https://github.com/<?php echo htmlspecialchars($owner, ENT_QUOTES, 'UTF-8'); ?>.png?size=40"
+                   class="owner-avatar"
+                   alt="<?php echo htmlspecialchars($owner, ENT_QUOTES, 'UTF-8'); ?>"
+                   loading="lazy">
+              <h3 class="owner-name"><?php echo htmlspecialchars($owner, ENT_QUOTES, 'UTF-8'); ?></h3>
+            </a>
             <span class="owner-count"><?php echo count($ownerSites); ?></span>
           </div>
           <section class="projects-container">
