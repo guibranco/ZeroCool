@@ -40,6 +40,12 @@ jobs:
       - name: Fetch GitHub Pages sites and cache images
         run: php Src/fetch-github-sites.php
 
+      - name: Upload CSV report artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: github-pages-report
+          path: github-pages-report.csv
+
       - name: Zip files
         run: |
           cd Src
@@ -70,6 +76,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Download CSV report artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: github-pages-report
+
       - name: Create Release
         uses: ncipollo/release-action@v1.21.0
         with:
@@ -81,3 +92,4 @@ jobs:
           name: Release v${{ env.SEMVER }}
           generateReleaseNotes: true
           body: Release ${{ env.SEMVER }} of ${{ github.repository }}
+          artifacts: "github-pages-report.csv"

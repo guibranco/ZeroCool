@@ -46,9 +46,10 @@ function fetchOgImage(string $owner, string $repo, string $cacheDir, bool $isCli
     return '';
 }
 
-$token = GH_PAT;
-$sites = [];
-$page  = 1;
+$token  = GH_PAT;
+$sites  = [];
+$report = [];
+$page   = 1;
 
 if ($isCli) echo "Fetching repositories from GitHub API...\n";
 
@@ -98,6 +99,15 @@ do {
         $hasHomepage = !empty($repo['homepage']);
         $hasPages    = $repo['has_pages'] === true;
 
+        $group = match (true) {
+            $hasPages  && $hasHomepage  => 'has_pages && homepage',
+            $hasPages  && !$hasHomepage => 'has_pages && no homepage',
+            !$hasPages && $hasHomepage  => 'no has_pages && homepage',
+            default                     => 'no has_pages && no homepage',
+        };
+
+        $report[] = [$repo['owner']['login'], $repo['name'], $group];
+
         if ($hasHomepage && $hasPages) {
             $sites[] = [
                 'name'        => $repo['name'],
@@ -140,7 +150,16 @@ file_put_contents(
 );
 
 if ($isCli) {
-    echo "\nFound " . count($sites) . " repositories with homepage URLs.\n";
+    $csvPath = dirname(__DIR__) . '/github-pages-report.csv';
+    $fh = fopen($csvPath, 'w');
+    fputcsv($fh, ['owner', 'name', 'group']);
+    usort($report, fn($a, $b) => $a[2] <=> $b[2] ?: strcmp($a[0], $b[0]) ?: strcmp($a[1], $b[1]));
+    foreach ($report as $row) {
+        fputcsv($fh, $row);
+    }
+    fclose($fh);
+    echo "\nCSV report written to github-pages-report.csv (" . count($report) . " repositories)\n";
+    echo "Found " . count($sites) . " repositories with homepage URLs.\n";
     echo "Output written to github-sites.json\n";
 } else {
     echo json_encode(['success' => true, 'count' => count($sites)]);
