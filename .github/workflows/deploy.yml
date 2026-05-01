@@ -37,12 +37,6 @@ jobs:
           printf '<?php\ndefine("GH_PAT", "%s");\ndefine("FETCH_TOKEN", "%s");\n' \
             "$GH_PAT" "$FETCH_TOKEN" > Src/secrets.php
 
-      - name: Fetch GitHub Pages sites
-        run: php Src/fetch-github-sites.php
-
-      - name: Copy github-sites.json to repo root
-        run: cp Src/github-sites.json github-sites.json
-
       - name: Zip files
         run: |
           cd Src

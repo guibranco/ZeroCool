@@ -164,7 +164,7 @@ header {
 
 /* ── Facebook Widget ───────────────────────────────────────────── */
 .facebook-widget {
-  position: fixed;
+  position: fixed !important;
   top: 96px;
   right: 20px;
   width: 300px;

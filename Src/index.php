@@ -87,7 +87,7 @@ ksort($socialLinks);
       </div>
     </section>
 
-    <div class="fb-page" data-href="https://www.facebook.com/guilhermebrancostracini" data-tabs="timeline" data-width="300" data-height="400" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://www.facebook.com/guilhermebrancostracini" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/guilhermebrancostracini">Guilherme Branco Stracini</a></blockquote></div>
+    <div class="facebook-widget fb-page" data-href="https://www.facebook.com/guilhermebrancostracini" data-tabs="timeline" data-width="300" data-height="400" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://www.facebook.com/guilhermebrancostracini" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/guilhermebrancostracini">Guilherme Branco Stracini</a></blockquote></div>
 
 
     <main>
