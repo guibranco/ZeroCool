@@ -123,52 +123,71 @@ ksort($socialLinks);
         </section>
       </div>
 
-      <?php $githubSites = getGitHubPagesSites(); ?>
-      <?php if (!empty($githubSites)): ?>
+      <?php
+          $githubSites = getGitHubPagesSites();
+          $byOwner = [];
+          foreach ($githubSites as $site) {
+              $byOwner[$site['owner']][] = $site;
+          }
+          ksort($byOwner);
+      ?>
+      <?php if (!empty($byOwner)): ?>
       <div class="section-divider"></div>
       <div class="section-group">
         <div class="section-header section-header--github">
           <h2 class="section-title">GitHub Pages</h2>
           <p class="section-subtitle">Open source projects published via GitHub Pages</p>
         </div>
-        <section class="projects-container">
-          <?php foreach ($githubSites as $site):
-              $siteName    = htmlspecialchars($site['name'], ENT_QUOTES, 'UTF-8');
-              $siteDesc    = htmlspecialchars($site['description'] ?? '', ENT_QUOTES, 'UTF-8');
-              $siteHome    = htmlspecialchars($site['homepage'], ENT_QUOTES, 'UTF-8');
-              $siteRepo    = htmlspecialchars($site['html_url'], ENT_QUOTES, 'UTF-8');
-              $ogImage     = !empty($site['og_image'])
-                  ? htmlspecialchars(PORTFOLIO_BASE . 'imagens/github-pages/' . $site['og_image'], ENT_QUOTES, 'UTF-8')
-                  : htmlspecialchars('https://opengraph.githubassets.com/1/' . $site['owner'] . '/' . $site['name'], ENT_QUOTES, 'UTF-8');
-              $displayName = ucwords(str_replace(['-', '_'], ' ', $site['name']));
-              if (strlen($displayName) <= 3) {
-                  $displayName = strtoupper($displayName);
-              }
-          ?>
-          <article class="project-card project-card--github">
-            <div class="project-image-wrapper">
-              <img loading="lazy"
-                   src="<?php echo $ogImage; ?>"
-                   alt="<?php echo $siteName; ?> preview"
-                   class="project-image">
-            </div>
-            <div class="project-body">
-              <h2 class="project-name"><?php echo htmlspecialchars($displayName, ENT_QUOTES, 'UTF-8'); ?></h2>
-              <p class="project-description"><?php echo $siteDesc ?: '&mdash;'; ?></p>
-              <div class="project-links">
-                <a href="<?php echo $siteHome; ?>"
-                   class="project-link"
-                   target="_blank"
-                   rel="noopener">Visit Site</a>
-                <a href="<?php echo $siteRepo; ?>"
-                   class="project-link project-link--repo"
-                   target="_blank"
-                   rel="noopener">Repository</a>
+        <?php foreach ($byOwner as $owner => $ownerSites): ?>
+        <div class="owner-group">
+          <div class="owner-header">
+            <img src="https://github.com/<?php echo htmlspecialchars($owner, ENT_QUOTES, 'UTF-8'); ?>.png?size=40"
+                 class="owner-avatar"
+                 alt="<?php echo htmlspecialchars($owner, ENT_QUOTES, 'UTF-8'); ?>"
+                 loading="lazy">
+            <h3 class="owner-name"><?php echo htmlspecialchars($owner, ENT_QUOTES, 'UTF-8'); ?></h3>
+            <span class="owner-count"><?php echo count($ownerSites); ?></span>
+          </div>
+          <section class="projects-container">
+            <?php foreach ($ownerSites as $site):
+                $siteName    = htmlspecialchars($site['name'], ENT_QUOTES, 'UTF-8');
+                $siteDesc    = htmlspecialchars($site['description'] ?? '', ENT_QUOTES, 'UTF-8');
+                $siteHome    = htmlspecialchars($site['homepage'], ENT_QUOTES, 'UTF-8');
+                $siteRepo    = htmlspecialchars($site['html_url'], ENT_QUOTES, 'UTF-8');
+                $ogImage     = !empty($site['og_image'])
+                    ? htmlspecialchars(PORTFOLIO_BASE . 'imagens/github-pages/' . $site['og_image'], ENT_QUOTES, 'UTF-8')
+                    : htmlspecialchars('https://opengraph.githubassets.com/1/' . $site['owner'] . '/' . $site['name'], ENT_QUOTES, 'UTF-8');
+                $displayName = ucwords(str_replace(['-', '_'], ' ', $site['name']));
+                if (strlen($displayName) <= 3) {
+                    $displayName = strtoupper($displayName);
+                }
+            ?>
+            <article class="project-card project-card--github">
+              <div class="project-image-wrapper">
+                <img loading="lazy"
+                     src="<?php echo $ogImage; ?>"
+                     alt="<?php echo $siteName; ?> preview"
+                     class="project-image">
               </div>
-            </div>
-          </article>
-          <?php endforeach; ?>
-        </section>
+              <div class="project-body">
+                <h2 class="project-name"><?php echo htmlspecialchars($displayName, ENT_QUOTES, 'UTF-8'); ?></h2>
+                <p class="project-description"><?php echo $siteDesc ?: '&mdash;'; ?></p>
+                <div class="project-links">
+                  <a href="<?php echo $siteHome; ?>"
+                     class="project-link"
+                     target="_blank"
+                     rel="noopener">Visit Site</a>
+                  <a href="<?php echo $siteRepo; ?>"
+                     class="project-link project-link--repo"
+                     target="_blank"
+                     rel="noopener">Repository</a>
+                </div>
+              </div>
+            </article>
+            <?php endforeach; ?>
+          </section>
+        </div>
+        <?php endforeach; ?>
       </div>
       <?php endif; ?>
     </main>
