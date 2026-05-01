@@ -102,6 +102,7 @@ do {
                 'html_url'    => $repo['html_url'],
                 'homepage'    => $repo['homepage'],
                 'owner'       => $repo['owner']['login'],
+                'private'     => $repo['private'] === true,
             ];
         }
     }

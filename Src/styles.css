@@ -431,6 +431,18 @@ main {
 
 .project-card:hover .project-link--repo { color: var(--gold); }
 
+.project-link--private {
+  color: var(--text-muted);
+  font-size: 0.8rem;
+  cursor: default;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  opacity: 0.6;
+}
+
+.project-link--private::after { content: none; }
+
 /* ── Footer ────────────────────────────────────────────────────── */
 footer {
   background: var(--surface);

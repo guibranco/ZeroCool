@@ -182,10 +182,17 @@ ksort($socialLinks);
                      class="project-link"
                      target="_blank"
                      rel="noopener">Visit Site</a>
+                  <?php if (!empty($site['private'])): ?>
+                  <span class="project-link project-link--private" title="Private repository">
+                    <svg width="13" height="13" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M4 5V4a4 4 0 0 1 8 0v1h1a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1h1Zm2 0h4V4a2 2 0 0 0-4 0v1ZM8 9a1 1 0 0 0-1 1v1a1 1 0 0 0 2 0v-1a1 1 0 0 0-1-1Z"/></svg>
+                    Private
+                  </span>
+                  <?php else: ?>
                   <a href="<?php echo $siteRepo; ?>"
                      class="project-link project-link--repo"
                      target="_blank"
                      rel="noopener">Repository</a>
+                  <?php endif; ?>
                 </div>
               </div>
             </article>
