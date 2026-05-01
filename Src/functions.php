@@ -1,9 +1,11 @@
 <?php
 
-define('BASE_DIR', '/home/zerocool/public_html/');
-define('SITE_BASE', 'https://zerocool.com.br/');
-define('PORTFOLIO_BASE', 'https://zerocool.com.br/portfolio/');
-define('SCREENSHOT_DIR', BASE_DIR . 'portfolio/imagens/screenshots/');
+$_isLocal = !is_dir('/home/zerocool/public_html/');
+
+define('BASE_DIR',            $_isLocal ? __DIR__ . '/' : '/home/zerocool/public_html/');
+define('SITE_BASE',           'https://zerocool.com.br/');
+define('PORTFOLIO_BASE',      'https://zerocool.com.br/portfolio/');
+define('SCREENSHOT_DIR',      $_isLocal ? BASE_DIR . 'imagens/screenshots/' : BASE_DIR . 'portfolio/imagens/screenshots/');
 define('SCREENSHOT_URL_BASE', PORTFOLIO_BASE . 'imagens/screenshots/');
 
 $FORBIDDEN = ['cgi-bin', 'inovacao', 'portfolio', 'static', '.htpasswds', '.well-known'];

@@ -98,70 +98,83 @@ ksort($socialLinks);
     </div>
 
     <main>
-      <section class="projects-container">
-        <?php foreach ($projects as $project):
-            $name = ucwords(str_replace('_', ' ', str_replace('-', ' ', $project['name'])));
-            if (strlen($name) <= 3) {
-                $name = strtoupper($name);
-            }
-        ?>
-        <article class="project-card">
-          <div class="project-image-wrapper">
-            <img loading="lazy"
-                 src="<?php echo htmlspecialchars($project['screenshot'], ENT_QUOTES, 'UTF-8'); ?>"
-                 alt="<?php echo htmlspecialchars($name, ENT_QUOTES, 'UTF-8'); ?> screenshot"
-                 class="project-image">
-          </div>
-          <div class="project-body">
-            <h2 class="project-name"><?php echo htmlspecialchars($name, ENT_QUOTES, 'UTF-8'); ?></h2>
-            <p class="project-description"><?php echo htmlspecialchars($project['description'], ENT_QUOTES, 'UTF-8'); ?></p>
-            <a href="<?php echo htmlspecialchars($project['url'], ENT_QUOTES, 'UTF-8'); ?>"
-               class="project-link"
-               target="_blank"
-               rel="noopener">View Project</a>
-          </div>
-        </article>
-        <?php endforeach; ?>
-      </section>
-      <?php $githubSites = getGitHubPagesSites(); ?>
-      <?php if (!empty($githubSites)): ?>
-      <section class="projects-container github-pages-section">
-        <h2 class="section-title">GitHub Pages</h2>
-        <?php foreach ($githubSites as $site):
-            $siteName    = htmlspecialchars($site['name'], ENT_QUOTES, 'UTF-8');
-            $siteDesc    = htmlspecialchars($site['description'] ?? '', ENT_QUOTES, 'UTF-8');
-            $siteHome    = htmlspecialchars($site['homepage'], ENT_QUOTES, 'UTF-8');
-            $siteRepo    = htmlspecialchars($site['html_url'], ENT_QUOTES, 'UTF-8');
-            $ogImage     = htmlspecialchars('https://opengraph.githubassets.com/1/' . $site['owner'] . '/' . $site['name'], ENT_QUOTES, 'UTF-8');
-            $displayName = ucwords(str_replace(['-', '_'], ' ', $site['name']));
-            if (strlen($displayName) <= 3) {
-                $displayName = strtoupper($displayName);
-            }
-        ?>
-        <article class="project-card">
-          <div class="project-image-wrapper">
-            <img loading="lazy"
-                 src="<?php echo $ogImage; ?>"
-                 alt="<?php echo $siteName; ?> preview"
-                 class="project-image">
-          </div>
-          <div class="project-body">
-            <h2 class="project-name"><?php echo htmlspecialchars($displayName, ENT_QUOTES, 'UTF-8'); ?></h2>
-            <p class="project-description"><?php echo $siteDesc ?: '&mdash;'; ?></p>
-            <div class="project-links">
-              <a href="<?php echo $siteHome; ?>"
+      <div class="section-group">
+        <div class="section-header">
+          <h2 class="section-title">Hosted Projects</h2>
+          <p class="section-subtitle">Deployed on shared hosting</p>
+        </div>
+        <section class="projects-container">
+          <?php foreach ($projects as $project):
+              $name = ucwords(str_replace('_', ' ', str_replace('-', ' ', $project['name'])));
+              if (strlen($name) <= 3) {
+                  $name = strtoupper($name);
+              }
+          ?>
+          <article class="project-card">
+            <div class="project-image-wrapper">
+              <img loading="lazy"
+                   src="<?php echo htmlspecialchars($project['screenshot'], ENT_QUOTES, 'UTF-8'); ?>"
+                   alt="<?php echo htmlspecialchars($name, ENT_QUOTES, 'UTF-8'); ?> screenshot"
+                   class="project-image">
+            </div>
+            <div class="project-body">
+              <h2 class="project-name"><?php echo htmlspecialchars($name, ENT_QUOTES, 'UTF-8'); ?></h2>
+              <p class="project-description"><?php echo htmlspecialchars($project['description'], ENT_QUOTES, 'UTF-8'); ?></p>
+              <a href="<?php echo htmlspecialchars($project['url'], ENT_QUOTES, 'UTF-8'); ?>"
                  class="project-link"
                  target="_blank"
-                 rel="noopener">Visit Site</a>
-              <a href="<?php echo $siteRepo; ?>"
-                 class="project-link project-link--repo"
-                 target="_blank"
-                 rel="noopener">Repository</a>
+                 rel="noopener">View Project</a>
             </div>
-          </div>
-        </article>
-        <?php endforeach; ?>
-      </section>
+          </article>
+          <?php endforeach; ?>
+        </section>
+      </div>
+
+      <?php $githubSites = getGitHubPagesSites(); ?>
+      <?php if (!empty($githubSites)): ?>
+      <div class="section-divider"></div>
+      <div class="section-group">
+        <div class="section-header section-header--github">
+          <h2 class="section-title">GitHub Pages</h2>
+          <p class="section-subtitle">Open source projects published via GitHub Pages</p>
+        </div>
+        <section class="projects-container">
+          <?php foreach ($githubSites as $site):
+              $siteName    = htmlspecialchars($site['name'], ENT_QUOTES, 'UTF-8');
+              $siteDesc    = htmlspecialchars($site['description'] ?? '', ENT_QUOTES, 'UTF-8');
+              $siteHome    = htmlspecialchars($site['homepage'], ENT_QUOTES, 'UTF-8');
+              $siteRepo    = htmlspecialchars($site['html_url'], ENT_QUOTES, 'UTF-8');
+              $ogImage     = htmlspecialchars('https://opengraph.githubassets.com/1/' . $site['owner'] . '/' . $site['name'], ENT_QUOTES, 'UTF-8');
+              $displayName = ucwords(str_replace(['-', '_'], ' ', $site['name']));
+              if (strlen($displayName) <= 3) {
+                  $displayName = strtoupper($displayName);
+              }
+          ?>
+          <article class="project-card project-card--github">
+            <div class="project-image-wrapper">
+              <img loading="lazy"
+                   src="<?php echo $ogImage; ?>"
+                   alt="<?php echo $siteName; ?> preview"
+                   class="project-image">
+            </div>
+            <div class="project-body">
+              <h2 class="project-name"><?php echo htmlspecialchars($displayName, ENT_QUOTES, 'UTF-8'); ?></h2>
+              <p class="project-description"><?php echo $siteDesc ?: '&mdash;'; ?></p>
+              <div class="project-links">
+                <a href="<?php echo $siteHome; ?>"
+                   class="project-link"
+                   target="_blank"
+                   rel="noopener">Visit Site</a>
+                <a href="<?php echo $siteRepo; ?>"
+                   class="project-link project-link--repo"
+                   target="_blank"
+                   rel="noopener">Repository</a>
+              </div>
+            </div>
+          </article>
+          <?php endforeach; ?>
+        </section>
+      </div>
       <?php endif; ?>
     </main>
 
