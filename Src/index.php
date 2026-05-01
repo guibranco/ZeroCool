@@ -52,6 +52,8 @@ ksort($socialLinks);
     </script>
   </head>
   <body>
+    <div id="fb-root"></div>
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/pt_BR/sdk.js#xfbml=1&version=v25.0&appId=290252964970555"></script>
 
     <header>
       <div class="social-links">
@@ -85,17 +87,8 @@ ksort($socialLinks);
       </div>
     </section>
 
-    <div class="facebook-widget">
-      <iframe
-        title="Facebook Page Timeline"
-        src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fguilhermebrancostracini&tabs=timeline&width=300&height=400&small_header=true&adapt_container_width=true&hide_cover=false&show_facepile=true&appId"
-        width="300"
-        height="400"
-        style="border:none; overflow:hidden; display:block;"
-        allowfullscreen="true"
-        allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
-      </iframe>
-    </div>
+    <div class="fb-page" data-href="https://www.facebook.com/guilhermebrancostracini" data-tabs="timeline" data-width="300" data-height="400" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://www.facebook.com/guilhermebrancostracini" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/guilhermebrancostracini">Guilherme Branco Stracini</a></blockquote></div>
+
 
     <main>
       <div class="section-group">
