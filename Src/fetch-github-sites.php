@@ -95,7 +95,10 @@ do {
     if ($isCli) echo "Page {$page}: fetched " . count($repos) . " repositories.\n";
 
     foreach ($repos as $repo) {
-        if (!empty($repo['homepage']) && $repo['has_pages'] === true) {
+        $hasHomepage = !empty($repo['homepage']);
+        $hasPages    = $repo['has_pages'] === true;
+
+        if ($hasHomepage && $hasPages) {
             $sites[] = [
                 'name'        => $repo['name'],
                 'description' => $repo['description'] ?? '',
@@ -104,6 +107,12 @@ do {
                 'owner'       => $repo['owner']['login'],
                 'private'     => $repo['private'] === true,
             ];
+        } elseif ($isCli) {
+            if ($hasHomepage && !$hasPages) {
+                echo "  [skip] {$repo['full_name']} — has homepage ({$repo['homepage']}) but has_pages=false\n";
+            } elseif ($hasPages && !$hasHomepage) {
+                echo "  [skip] {$repo['full_name']} — has_pages=true but homepage is empty\n";
+            }
         }
     }
 
