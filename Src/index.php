@@ -125,11 +125,16 @@ ksort($socialLinks);
 
       <?php
           $githubSites = getGitHubPagesSites();
+          $ownerPriority = ['guibranco' => 1.0, 'guilhermestracini' => 0.9, 'apibr' => 0.8];
           $byOwner = [];
           foreach ($githubSites as $site) {
               $byOwner[$site['owner']][] = $site;
           }
-          ksort($byOwner);
+          uksort($byOwner, function (string $a, string $b) use ($ownerPriority): int {
+              $pa = $ownerPriority[$a] ?? 0.5;
+              $pb = $ownerPriority[$b] ?? 0.5;
+              return $pb <=> $pa ?: strcmp($a, $b);
+          });
       ?>
       <?php if (!empty($byOwner)): ?>
       <div class="section-divider"></div>
