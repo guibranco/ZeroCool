@@ -41,7 +41,7 @@ jobs:
         run: php Src/fetch-github-sites.php
 
       - name: Upload CSV report artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: github-pages-report
           path: github-pages-report.csv
