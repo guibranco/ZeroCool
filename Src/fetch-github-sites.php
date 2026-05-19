@@ -20,29 +20,56 @@ function fetchOgImage(string $owner, string $repo, string $cacheDir, bool $isCli
     $cachePath = $cacheDir . '/' . $filename;
 
     if (file_exists($cachePath)) {
-        if ($isCli) echo "  [cache] {$filename}\n";
+        if ($isCli) {
+            echo "  [cache] {$filename}\n";
+        }
         return $filename;
     }
 
-    $ch = curl_init("https://opengraph.githubassets.com/1/{$owner}/{$repo}");
-    curl_setopt_array($ch, [
-        CURLOPT_RETURNTRANSFER => true,
-        CURLOPT_FOLLOWLOCATION => true,
-        CURLOPT_TIMEOUT        => 15,
-        CURLOPT_USERAGENT      => 'ZeroCool-Portfolio',
-    ]);
+    $maxRetries = 3;
+    $retryDelay = 10;
 
-    $data     = curl_exec($ch);
-    $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-    curl_close($ch);
+    for ($attempt = 1; $attempt <= $maxRetries; $attempt++) {
+        $ch = curl_init("https://opengraph.githubassets.com/1/{$owner}/{$repo}");
+        curl_setopt_array($ch, [
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_FOLLOWLOCATION => true,
+            CURLOPT_TIMEOUT        => 15,
+            CURLOPT_USERAGENT      => 'ZeroCool-Portfolio',
+        ]);
 
-    if ($httpCode === 200 && !empty($data)) {
-        file_put_contents($cachePath, $data);
-        if ($isCli) echo "  [fetch] {$filename}\n";
-        return $filename;
+        $data     = curl_exec($ch);
+        $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+        curl_close($ch);
+
+        if ($httpCode === 200 && !empty($data)) {
+            file_put_contents($cachePath, $data);
+            if ($isCli) {
+                echo "  [fetch] {$filename}\n";
+            }
+            return $filename;
+        }
+
+        if ($httpCode === 429) {
+            if ($isCli) {
+                echo "  [429] {$filename} — rate limited, waiting {$retryDelay}s (attempt {$attempt}/{$maxRetries})\n";
+            }
+            if ($attempt < $maxRetries) {
+                sleep($retryDelay);
+                $retryDelay *= 2;
+            }
+            continue;
+        }
+
+        if ($isCli) {
+            fwrite(STDERR, "  [error] {$owner}/{$repo}: HTTP {$httpCode}\n");
+        }
+        return '';
     }
 
-    if ($isCli) fwrite(STDERR, "  [error] {$owner}/{$repo}: HTTP {$httpCode}\n");
+    if ($isCli) {
+        fwrite(STDERR, "  [error] {$owner}/{$repo}: gave up after {$maxRetries} attempts (rate limited)\n");
+    }
     return '';
 }
 
