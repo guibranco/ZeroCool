@@ -26,8 +26,8 @@ function fetchOgImage(string $owner, string $repo, string $cacheDir, bool $isCli
         return $filename;
     }
 
-    $maxRetries = 3;
-    $retryDelay = 10;
+    $maxRetries = 5;
+    $retryDelay = 15;
 
     for ($attempt = 1; $attempt <= $maxRetries; $attempt++) {
         $ch = curl_init("https://opengraph.githubassets.com/1/{$owner}/{$repo}");
@@ -35,7 +35,7 @@ function fetchOgImage(string $owner, string $repo, string $cacheDir, bool $isCli
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_FOLLOWLOCATION => true,
             CURLOPT_TIMEOUT        => 15,
-            CURLOPT_USERAGENT      => 'ZeroCool-Portfolio',
+            CURLOPT_USERAGENT      => 'ZeroCool Portfolio Script (+https://github.com/guibranco/ZeroCool)',
         ]);
 
         $data     = curl_exec($ch);
@@ -148,10 +148,11 @@ do {
                 echo "  [error] {$repo['full_name']} — homepage is not HTTPS: {$homepage} | repo: {$repo['html_url']}\n";
             }
 
-            $segments   = array_values(array_filter(explode('/', trim($parsed['path'] ?? '', '/'))));
-            $nameInPath = in_array($repoName, $segments, true);
-            $nameInHost = str_starts_with("{$parsed['host']}", "{$repoName}.");
-            if ($isCli && !$nameInPath && !$nameInHost) {
+            $isProfileRepo = str_ends_with($repoName, '.github.io');
+            $segments      = array_values(array_filter(explode('/', trim($parsed['path'] ?? '', '/'))));
+            $nameInPath    = in_array($repoName, $segments, true);
+            $nameInHost    = str_starts_with("{$parsed['host']}", "{$repoName}.");
+            if ($isCli && !$nameInPath && !$nameInHost && !$isProfileRepo) {
                 echo "  [error] {$repo['full_name']} — repo name '{$repoName}' not found as full segment in: {$homepage} | repo: {$repo['html_url']}\n";
             }
 
