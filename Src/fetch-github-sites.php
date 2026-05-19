@@ -113,14 +113,38 @@ do {
         ];
 
         if ($hasHomepage && $hasPages) {
-            $sites[] = [
-                'name'        => $repo['name'],
-                'description' => $repo['description'] ?? '',
-                'html_url'    => $repo['html_url'],
-                'homepage'    => $repo['homepage'],
-                'owner'       => $repo['owner']['login'],
-                'private'     => $repo['private'] === true,
-            ];
+            $homepage  = $repo['homepage'];
+            $repoName  = $repo['name'];
+            $parsed    = parse_url($homepage);
+            $valid     = true;
+
+            if (($parsed['scheme'] ?? '') !== 'https') {
+                if ($isCli) {
+                    echo "  [error] {$repo['full_name']} — homepage is not HTTPS: {$homepage}\n";
+                }
+                $valid = false;
+            }
+
+            $segments   = array_values(array_filter(explode('/', trim($parsed['path'] ?? '', '/'))));
+            $nameInPath = in_array($repoName, $segments, true);
+            $nameInHost = str_starts_with("{$parsed['host']}", "{$repoName}.");
+            if (!$nameInPath && !$nameInHost) {
+                if ($isCli) {
+                    echo "  [error] {$repo['full_name']} — repo name '{$repoName}' not found as full segment in: {$homepage}\n";
+                }
+                $valid = false;
+            }
+
+            if ($valid) {
+                $sites[] = [
+                    'name'        => $repoName,
+                    'description' => $repo['description'] ?? '',
+                    'html_url'    => $repo['html_url'],
+                    'homepage'    => $homepage,
+                    'owner'       => $repo['owner']['login'],
+                    'private'     => $repo['private'] === true,
+                ];
+            }
         } elseif ($isCli) {
             if ($hasHomepage && !$hasPages) {
                 echo "  [skip] {$repo['full_name']} — has homepage ({$repo['homepage']}) but has_pages=false\n";
