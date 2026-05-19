@@ -52,4 +52,4 @@ The portfolio is accessible through this domain:
 
 ## ⚖️ License
 
-Copyright © Guilherme Branco Stracini 2007 - 2025
+Copyright © Guilherme Branco Stracini 2007 - 2026
