@@ -145,14 +145,14 @@ do {
             $parsed    = parse_url($homepage);
 
             if ($isCli && ($parsed['scheme'] ?? '') !== 'https') {
-                echo "  [warn] {$repo['full_name']} — homepage is not HTTPS: {$homepage} | repo: {$repo['html_url']}\n";
+                echo "  [error] {$repo['full_name']} — homepage is not HTTPS: {$homepage} | repo: {$repo['html_url']}\n";
             }
 
             $segments   = array_values(array_filter(explode('/', trim($parsed['path'] ?? '', '/'))));
             $nameInPath = in_array($repoName, $segments, true);
             $nameInHost = str_starts_with("{$parsed['host']}", "{$repoName}.");
             if ($isCli && !$nameInPath && !$nameInHost) {
-                echo "  [warn] {$repo['full_name']} — repo name '{$repoName}' not found as full segment in: {$homepage} | repo: {$repo['html_url']}\n";
+                echo "  [error] {$repo['full_name']} — repo name '{$repoName}' not found as full segment in: {$homepage} | repo: {$repo['html_url']}\n";
             }
 
             $sites[] = [
