@@ -274,6 +274,7 @@ main {
   margin-bottom: 16px;
   padding-bottom: 12px;
   border-bottom: 1px solid var(--border);
+  cursor: pointer;
 }
 
 .owner-link {
@@ -310,6 +311,38 @@ main {
   border-radius: 20px;
   padding: 2px 10px;
   letter-spacing: 0.04em;
+}
+
+.owner-toggle {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: background var(--transition), border-color var(--transition), color var(--transition);
+}
+
+.owner-toggle:hover {
+  border-color: var(--gold);
+  color: var(--gold);
+}
+
+.owner-chevron {
+  transition: transform var(--transition);
+}
+
+.owner-toggle[aria-expanded="true"] .owner-chevron {
+  transform: rotate(180deg);
+}
+
+.owner-panel[hidden] {
+  display: none;
 }
 
 /* ── Cards grid ────────────────────────────────────────────────── */
@@ -480,6 +513,7 @@ footer img.avatar {
   width: 28px;
   height: 28px;
   object-fit: cover;
+  object-position: top center;
   border: 2px solid var(--border);
   vertical-align: middle;
 }

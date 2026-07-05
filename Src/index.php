@@ -143,8 +143,10 @@ ksort($socialLinks);
           <h2 class="section-title">GitHub Pages</h2>
           <p class="section-subtitle">Open source projects published via GitHub Pages</p>
         </div>
-        <?php foreach ($byOwner as $owner => $ownerSites): ?>
-        <div class="owner-group">
+        <?php foreach ($byOwner as $owner => $ownerSites):
+            $ownerSlug = preg_replace('/[^a-zA-Z0-9_-]/', '-', $owner);
+        ?>
+        <div class="owner-group" data-owner="<?php echo htmlspecialchars($owner, ENT_QUOTES, 'UTF-8'); ?>">
           <div class="owner-header">
             <a href="https://github.com/<?php echo htmlspecialchars($owner, ENT_QUOTES, 'UTF-8'); ?>"
                class="owner-link"
@@ -157,7 +159,17 @@ ksort($socialLinks);
               <h3 class="owner-name"><?php echo htmlspecialchars($owner, ENT_QUOTES, 'UTF-8'); ?></h3>
             </a>
             <span class="owner-count"><?php echo count($ownerSites); ?></span>
+            <button type="button"
+                    class="owner-toggle"
+                    aria-expanded="false"
+                    aria-controls="owner-panel-<?php echo $ownerSlug; ?>"
+                    aria-label="Toggle <?php echo htmlspecialchars($owner, ENT_QUOTES, 'UTF-8'); ?> projects">
+              <svg class="owner-chevron" width="14" height="14" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
           </div>
+          <div class="owner-panel" id="owner-panel-<?php echo $ownerSlug; ?>" hidden>
           <section class="projects-container">
             <?php foreach ($ownerSites as $site):
                 $siteName    = htmlspecialchars($site['name'], ENT_QUOTES, 'UTF-8');
@@ -203,6 +215,7 @@ ksort($socialLinks);
             </article>
             <?php endforeach; ?>
           </section>
+          </div>
         </div>
         <?php endforeach; ?>
       </div>
@@ -229,5 +242,58 @@ ksort($socialLinks);
       </a>
     </footer>
 
+    <script>
+      (function () {
+        var STORAGE_KEY = 'zerocool.githubAccountsOpen';
+
+        function loadOpenState() {
+          try {
+            return JSON.parse(localStorage.getItem(STORAGE_KEY)) || {};
+          } catch (e) {
+            return {};
+          }
+        }
+
+        function saveOpenState(state) {
+          try {
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+          } catch (e) {
+            // localStorage unavailable (e.g. private browsing) - state just won't persist
+          }
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
+          var openState = loadOpenState();
+
+          document.querySelectorAll('.owner-group').forEach(function (group) {
+            var owner = group.dataset.owner;
+            var header = group.querySelector('.owner-header');
+            var toggle = group.querySelector('.owner-toggle');
+            var panel = group.querySelector('.owner-panel');
+            if (!header || !toggle || !panel) {
+              return;
+            }
+
+            function setOpen(isOpen) {
+              panel.hidden = !isOpen;
+              toggle.setAttribute('aria-expanded', String(isOpen));
+              group.classList.toggle('is-open', isOpen);
+            }
+
+            setOpen(!!openState[owner]);
+
+            header.addEventListener('click', function (event) {
+              if (event.target.closest('.owner-link')) {
+                return;
+              }
+              var isOpen = panel.hidden;
+              setOpen(isOpen);
+              openState[owner] = isOpen;
+              saveOpenState(openState);
+            });
+          });
+        });
+      })();
+    </script>
   </body>
 </html>
