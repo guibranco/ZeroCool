@@ -16,6 +16,5 @@
   { "url": "https://guilhermebranco.com.br/sports-agenda/", "name": "sports-agenda" },
   { "url": "https://guilhermebranco.com.br/TCC-SENAC/", "name": "TCC-SENAC" },
   { "url": "https://guilhermebranco.com.br/ui/", "name": "ui" },
-  { "url": "https://guilhermebranco.com.br/vagas/", "name": "vagas" },
-  { "url": "https://guilhermebranco.com.br/webhooks/", "name": "webhooks" }
+  { "url": "https://guilhermebranco.com.br/vagas/", "name": "vagas" }
 ]
