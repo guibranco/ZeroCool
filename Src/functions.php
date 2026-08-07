@@ -2,10 +2,10 @@
 
 $_isLocal = !is_dir('/home/zerocool/public_html/');
 
-define('BASE_DIR',            $_isLocal ? __DIR__ . '/' : '/home/zerocool/public_html/');
-define('SITE_BASE',           'https://zerocool.com.br/');
-define('PORTFOLIO_BASE',      'https://zerocool.com.br/portfolio/');
-define('SCREENSHOT_DIR',      $_isLocal ? BASE_DIR . 'imagens/screenshots/' : BASE_DIR . 'portfolio/imagens/screenshots/');
+define('BASE_DIR', $_isLocal ? __DIR__ . '/' : '/home/zerocool/public_html/');
+define('SITE_BASE', 'https://zerocool.com.br/');
+define('PORTFOLIO_BASE', 'https://zerocool.com.br/portfolio/');
+define('SCREENSHOT_DIR', $_isLocal ? BASE_DIR . 'imagens/screenshots/' : BASE_DIR . 'portfolio/imagens/screenshots/');
 define('SCREENSHOT_URL_BASE', PORTFOLIO_BASE . 'imagens/screenshots/');
 
 $FORBIDDEN = ['cgi-bin', 'portfolio', 'static', '.htpasswds', '.well-known'];
@@ -16,7 +16,8 @@ $FORBIDDEN = ['cgi-bin', 'portfolio', 'static', '.htpasswds', '.well-known'];
  *
  * @return string[] Sorted array of normalized (lowercase) directory names.
  */
-function getProjectSlugs(): array {
+function getProjectSlugs(): array
+{
     global $FORBIDDEN;
 
     $slugs = [];
@@ -44,7 +45,8 @@ function getProjectSlugs(): array {
  *
  * @return array<array{name: string, description: string, html_url: string, homepage: string, owner: string}>
  */
-function getGitHubPagesSites(): array {
+function getGitHubPagesSites(): array
+{
     $jsonFile = __DIR__ . '/github-sites.json';
     if (!file_exists($jsonFile)) {
         return [];
@@ -59,7 +61,8 @@ function getGitHubPagesSites(): array {
  *
  * @return array<string, array{screenshot: string, description: string, name: string, url: string}>
  */
-function getProjects(string $utm): array {
+function getProjects(string $utm): array
+{
     $projects = [];
 
     foreach (getProjectSlugs() as $slug) {
