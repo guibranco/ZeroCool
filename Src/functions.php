@@ -8,7 +8,7 @@ define('PORTFOLIO_BASE',      'https://zerocool.com.br/portfolio/');
 define('SCREENSHOT_DIR',      $_isLocal ? BASE_DIR . 'imagens/screenshots/' : BASE_DIR . 'portfolio/imagens/screenshots/');
 define('SCREENSHOT_URL_BASE', PORTFOLIO_BASE . 'imagens/screenshots/');
 
-$FORBIDDEN = ['cgi-bin', 'inovacao', 'portfolio', 'static', '.htpasswds', '.well-known'];
+$FORBIDDEN = ['cgi-bin', 'portfolio', 'static', '.htpasswds', '.well-known'];
 
 /**
  * Scans the public_html base directory and returns a sorted list of project slugs,
