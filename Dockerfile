@@ -1,4 +1,4 @@
-FROM php:8.6.0RC2-apache
+FROM php:8.6.0RC3-apache
 
 RUN apt-get update \
     && apt-get install -y --no-install-recommends curl \
