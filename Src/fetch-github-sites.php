@@ -14,6 +14,26 @@ if (!$isCli) {
     header('Content-Type: application/json');
 }
 
+/**
+ * Resolves the GitHub API base URL, using the proxy host when one is configured.
+ * Always uses HTTPS so the token in the Authorization header is never sent in clear text.
+ *
+ * @param string $proxyHost Proxy host or URL; empty to call api.github.com directly.
+ *
+ * @return string Base URL without a trailing slash.
+ */
+function resolveGitHubApiBase(string $proxyHost): string
+{
+    $proxyHost = trim($proxyHost);
+    if ($proxyHost === '') {
+        return 'https://api.github.com';
+    }
+
+    $proxyHost = preg_replace('#^https?://#i', '', $proxyHost);
+
+    return 'https://' . rtrim($proxyHost, '/');
+}
+
 function fetchOgImage(string $owner, string $repo, string $cacheDir, bool $isCli): string
 {
     $filename  = "{$owner}-{$repo}.png";
@@ -74,6 +94,7 @@ function fetchOgImage(string $owner, string $repo, string $cacheDir, bool $isCli
 }
 
 $token  = GH_PAT;
+$apiBase = resolveGitHubApiBase(defined('GH_API_PROXY_HOST') ? GH_API_PROXY_HOST : '');
 $sites  = [];
 $report = [];
 $page   = 1;
@@ -81,14 +102,18 @@ $page   = 1;
 $sitesJson      = @file_get_contents(dirname(__DIR__) . '/sites.json');
 $sitesJsonNames = array_column(json_decode($sitesJson ?: '[]', true) ?? [], 'name');
 
-if ($isCli) echo "Fetching repositories from GitHub API...\n";
+if ($isCli) {
+    echo "Fetching repositories from GitHub API via {$apiBase}...\n";
+}
 
 do {
-    $url = "https://api.github.com/user/repos?per_page=100&page={$page}&type=all";
+    $url = "{$apiBase}/user/repos?per_page=100&page={$page}&type=all";
 
     $ch = curl_init($url);
     curl_setopt_array($ch, [
         CURLOPT_RETURNTRANSFER => true,
+        CURLOPT_CONNECTTIMEOUT => 10,
+        CURLOPT_TIMEOUT        => 60,
         CURLOPT_HTTPHEADER     => [
             "Authorization: Bearer {$token}",
             "Accept: application/vnd.github+json",

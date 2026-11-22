@@ -33,9 +33,10 @@ jobs:
         env:
           GH_PAT: ${{ secrets.GH_PAT }}
           FETCH_TOKEN: ${{ secrets.FETCH_TOKEN }}
+          GH_API_PROXY_HOST: ${{ secrets.GH_API_PROXY_HOST }}
         run: |
-          printf '<?php\ndefine("GH_PAT", "%s");\ndefine("FETCH_TOKEN", "%s");\n' \
-            "$GH_PAT" "$FETCH_TOKEN" > Src/secrets.php
+          printf '<?php\ndefine("GH_PAT", "%s");\ndefine("FETCH_TOKEN", "%s");\ndefine("GH_API_PROXY_HOST", "%s");\n' \
+            "$GH_PAT" "$FETCH_TOKEN" "$GH_API_PROXY_HOST" > Src/secrets.php
 
       - name: Fetch GitHub Pages sites and cache images
         run: php Src/fetch-github-sites.php
