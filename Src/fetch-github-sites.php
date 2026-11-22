@@ -16,6 +16,7 @@ if (!$isCli) {
 
 /**
  * Resolves the GitHub API base URL, using the proxy host when one is configured.
+ * Always uses HTTPS so the token in the Authorization header is never sent in clear text.
  *
  * @param string $proxyHost Proxy host or URL; empty to call api.github.com directly.
  *
@@ -28,11 +29,9 @@ function resolveGitHubApiBase(string $proxyHost): string
         return 'https://api.github.com';
     }
 
-    if (preg_match('#^https?://#i', $proxyHost) === 0) {
-        $proxyHost = 'https://' . $proxyHost;
-    }
+    $proxyHost = preg_replace('#^https?://#i', '', $proxyHost);
 
-    return rtrim($proxyHost, '/');
+    return 'https://' . rtrim($proxyHost, '/');
 }
 
 function fetchOgImage(string $owner, string $repo, string $cacheDir, bool $isCli): string
@@ -113,6 +112,8 @@ do {
     $ch = curl_init($url);
     curl_setopt_array($ch, [
         CURLOPT_RETURNTRANSFER => true,
+        CURLOPT_CONNECTTIMEOUT => 10,
+        CURLOPT_TIMEOUT        => 60,
         CURLOPT_HTTPHEADER     => [
             "Authorization: Bearer {$token}",
             "Accept: application/vnd.github+json",
