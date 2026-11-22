@@ -94,7 +94,11 @@ function fetchOgImage(string $owner, string $repo, string $cacheDir, bool $isCli
 }
 
 $token  = GH_PAT;
-$apiBase = resolveGitHubApiBase(defined('GH_API_PROXY_HOST') ? GH_API_PROXY_HOST : '');
+// GitHub-hosted runners are outside the proxy's allowlist, so CI calls the API directly;
+// the deployed site goes through the proxy.
+$isGitHubActions = getenv('GITHUB_ACTIONS') === 'true';
+$proxyHost       = defined('GH_API_PROXY_HOST') ? GH_API_PROXY_HOST : '';
+$apiBase         = resolveGitHubApiBase($isGitHubActions ? '' : $proxyHost);
 $sites  = [];
 $report = [];
 $page   = 1;
