@@ -14,6 +14,13 @@ if (!$isCli) {
     header('Content-Type: application/json');
 }
 
+/**
+ * Resolves the GitHub API base URL, using the proxy host when one is configured.
+ *
+ * @param string $proxyHost Proxy host or URL; empty to call api.github.com directly.
+ *
+ * @return string Base URL without a trailing slash.
+ */
 function resolveGitHubApiBase(string $proxyHost): string
 {
     $proxyHost = trim($proxyHost);
@@ -21,7 +28,7 @@ function resolveGitHubApiBase(string $proxyHost): string
         return 'https://api.github.com';
     }
 
-    if (!preg_match('#^https?://#i', $proxyHost)) {
+    if (preg_match('#^https?://#i', $proxyHost) === 0) {
         $proxyHost = 'https://' . $proxyHost;
     }
 
@@ -96,7 +103,9 @@ $page   = 1;
 $sitesJson      = @file_get_contents(dirname(__DIR__) . '/sites.json');
 $sitesJsonNames = array_column(json_decode($sitesJson ?: '[]', true) ?? [], 'name');
 
-if ($isCli) echo "Fetching repositories from GitHub API via {$apiBase}...\n";
+if ($isCli) {
+    echo "Fetching repositories from GitHub API via {$apiBase}...\n";
+}
 
 do {
     $url = "{$apiBase}/user/repos?per_page=100&page={$page}&type=all";
